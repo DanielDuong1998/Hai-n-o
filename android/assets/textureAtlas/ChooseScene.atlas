@@ -1,0 +1,41 @@
+
+ChooseScene.png
+size: 1024,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+backBtn
+  rotate: false
+  xy: 724, 1703
+  size: 250, 83
+  orig: 250, 83
+  offset: 0, 0
+  index: -1
+bg
+  rotate: false
+  xy: 2, 506
+  size: 720, 1280
+  orig: 720, 1280
+  offset: 0, 0
+  index: -1
+easyBtn
+  rotate: false
+  xy: 2, 2
+  size: 500, 166
+  orig: 500, 166
+  offset: 0, 0
+  index: -1
+hardBtn
+  rotate: false
+  xy: 2, 170
+  size: 500, 166
+  orig: 500, 166
+  offset: 0, 0
+  index: -1
+mediumBtn
+  rotate: false
+  xy: 2, 338
+  size: 500, 166
+  orig: 500, 166
+  offset: 0, 0
+  index: -1

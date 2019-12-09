@@ -1,0 +1,20 @@
+
+StartScene.png
+size: 1024,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bg
+  rotate: false
+  xy: 2, 170
+  size: 720, 1280
+  orig: 720, 1280
+  offset: 0, 0
+  index: -1
+startBtn
+  rotate: false
+  xy: 2, 2
+  size: 500, 166
+  orig: 500, 166
+  offset: 0, 0
+  index: -1

@@ -23,9 +23,19 @@ public class Level1 extends Level {
       case 0: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[1]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
         rock2.moveRock(manageRocks.ballr);
@@ -35,9 +45,19 @@ public class Level1 extends Level {
       case 1: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[1]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
         rock2.moveRock(manageRocks.ballr);
@@ -47,9 +67,19 @@ public class Level1 extends Level {
       case 2: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[1]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
         rock2.moveRock(manageRocks.ballr);
@@ -59,9 +89,19 @@ public class Level1 extends Level {
       case 3: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[1]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
         rock2.moveRock(manageRocks.ballr);
@@ -71,8 +111,18 @@ public class Level1 extends Level {
       }
       case 4: {
         Rock rock1 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
         rock1.activeNext();
@@ -81,8 +131,18 @@ public class Level1 extends Level {
       }
       case 5: {
         Rock rock1 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
         rock1.activeNext();
@@ -91,8 +151,18 @@ public class Level1 extends Level {
       }
       case 6: {
         Rock rock1 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.ballr);
         rock1.activeNext();
@@ -101,8 +171,18 @@ public class Level1 extends Level {
       }
       case 7: {
         Rock rock1 = manageRocks.getRock();
+        int id = 1;
+        if(turn >= 60){
+          int percent = (int) Math.floor(Math.random()*100 + 1);
+          if(percent >= 70) {
+            id = 0;
+          }
+          else {
+            id = 1;
+          }
+        }
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[1]);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.ballr);
         rock1.activeNext();
@@ -124,18 +204,18 @@ public class Level1 extends Level {
   public int getMode(int start, int end) {
     int rs = (int) Math.floor(Math.random()*(end - start + 1) + start);
     tempRandom.add(rs);
-    if(tempRandom.size == 3){
-      if(tempRandom.get(0) == tempRandom.get(1) && tempRandom.get(0) == tempRandom.get(2)){
+    if(tempRandom.size == 2){
+      if(tempRandom.get(0) == tempRandom.get(1)){
         int temp = rs;
         while(temp == rs){
           temp = (int)Math.floor(Math.random()*(end - start + 1) + start);
         }
-        tempRandom.removeRange(0, 2);
+        tempRandom.removeRange(0, 1);
         System.out.println("size: " + tempRandom.size);
         return temp;
       }
       else {
-        tempRandom.removeRange(0, 2);
+        tempRandom.removeRange(0, 1);
         return rs;
       }
     }
@@ -153,21 +233,17 @@ public class Level1 extends Level {
       int percent = (int) Math.floor(Math.random()*100 + 1);
       if(percent <= 70){
         mode = getMode(0, 3);
-        //mode = (int)Math.floor(Math.random()*4);
       }
       else {
         mode = getMode(4, 7);
-        //mode = (int)Math.floor(Math.random()*4 + 4);
       }
     }
     else {
       mode = getMode(0, 3);
-      //mode = (int)Math.floor(Math.random()*4);
     }
 
     System.out.println("random: " + mode);
     start(mode);
-    //manageRocks.getSize();
   }
 
   protected void updateTimeScroll(){
@@ -227,7 +303,7 @@ public class Level1 extends Level {
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.7f;
+        Config.scaleTime[1] = 1.8f;
         System.out.println("log: " +turn);
 
         break;

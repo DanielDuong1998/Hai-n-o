@@ -1,6 +1,6 @@
 package com.ss.scenes;
 
-import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 import com.badlogic.gdx.math.Interpolation;
@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
@@ -52,6 +53,10 @@ public class PlayScene extends GScreen {
   private GShapeSprite blackOverlay;
   private PanelEndGame panelEndGame;
   int tick = 0;
+  public int score = 0;
+
+  private BitmapFont font;
+  private Label labelScore;
 
 
   @Override
@@ -69,8 +74,8 @@ public class PlayScene extends GScreen {
     initBackground();
     initUI();
     initDarkScreen();
-
     initCountDownTxt();
+    initBitmapfont();
 
     balll = new Ball(groupF);
     ballr = new Ball(groupF);
@@ -78,13 +83,6 @@ public class PlayScene extends GScreen {
     thumbl = new LeftThumb(atlas, groupF, balll);
     thumbr = new RightThumb(atlas, groupF, ballr);
     startGame();
-
-//    Image rock = GUI.createImage(atlas, "rock1");
-//    Image point = GUI.createImage(atlas, "point");
-//    mainGroup.addActor(rock);
-//    mainGroup.addActor(point);
-//    rock.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
-//    point.setPosition(rock.getX(), rock.getY());
 
   }
 
@@ -96,11 +94,9 @@ public class PlayScene extends GScreen {
     mainGroup = new GLayerGroup(){
       @Override
       public void act(float var1) {
-        super.act(var1);
-        tick++;
-        if(tick >= 1000){
-          tick = 0;
-          System.out.println("fps: " + Gdx.graphics.getFramesPerSecond());
+      super.act(var1);
+        if(labelScore != null){
+          labelScore.setText(score + "%");
         }
       }
     };
@@ -185,15 +181,16 @@ public class PlayScene extends GScreen {
     pauseBtn.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        pauseBtn.setTouchable(Touchable.disabled);
-        clickBtnEffect(pauseBtn, ()->{
-          continueBtn.setTouchable(Touchable.enabled);
-          continueBtn.setVisible(true);
-          quitBtn.setVisible(true);
-          mainGroup.setPause(true);
-          setColorDarkScreen(true, 0.8f);
-        });
-        return super.touchDown(event, x, y, pointer, button);
+      pauseBtn.setTouchable(Touchable.disabled);
+      SoundEffect.Play(SoundEffect.click);
+      clickBtnEffect(pauseBtn, ()->{
+        continueBtn.setTouchable(Touchable.enabled);
+        continueBtn.setVisible(true);
+        quitBtn.setVisible(true);
+        mainGroup.setPause(true);
+        setColorDarkScreen(true, 0.8f);
+      });
+      return super.touchDown(event, x, y, pointer, button);
       }
     });
   }
@@ -203,6 +200,7 @@ public class PlayScene extends GScreen {
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
         continueBtn.setTouchable(Touchable.disabled);
+        SoundEffect.Play(SoundEffect.click);
         clickBtnEffect(continueBtn, ()->{
           continueBtn.setVisible(false);
           quitBtn.setVisible(false);
@@ -222,11 +220,12 @@ public class PlayScene extends GScreen {
     quitBtn.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        quitBtn.setTouchable(Touchable.disabled);
-        clickBtnEffect(quitBtn, ()->{
-          setScreen(new StartScene());
-        });
-        return super.touchDown(event, x, y, pointer, button);
+      quitBtn.setTouchable(Touchable.disabled);
+      SoundEffect.Play(SoundEffect.click);
+      clickBtnEffect(quitBtn, ()->{
+        setScreen(new StartScene());
+      });
+      return super.touchDown(event, x, y, pointer, button);
       }
     });
   }
@@ -263,6 +262,13 @@ public class PlayScene extends GScreen {
     three.setVisible(false);
   }
 
+  private void initBitmapfont(){
+    font = GAssetsManager.getBitmapFont("font_white.fnt");
+    labelScore = new Label("" + 0, new Label.LabelStyle(font, null));
+    labelScore.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
+    mainGroup.addActor(labelScore);
+  }
+
   private void pauseBtnClick(){
 
   }
@@ -282,8 +288,12 @@ public class PlayScene extends GScreen {
       txtCountDown.get(index).setScale(0.3f);
       final int indexTemp = index + 1;
       txtCountDown.get(index).addAction(Actions.sequence(
-        Actions.scaleTo(1, 1, 0.5f, Interpolation.swingIn),
-        Actions.scaleTo(1, 1, 0.5f, Interpolation.swingOut),
+        Actions.scaleTo(1, 1, 0.8f, Interpolation.swingIn),
+        GSimpleAction.simpleAction((d, a)->{
+          SoundEffect.Play(SoundEffect.tick);
+          return true;
+        }),
+        Actions.delay(0.2f),
         GSimpleAction.simpleAction((d, a)->{
           txtCountDown.get(index).setVisible(false);
           showTxt(indexTemp);

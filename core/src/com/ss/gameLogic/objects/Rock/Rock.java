@@ -24,8 +24,12 @@ public class Rock extends Actor {
   public boolean isAvai = true;
   protected PlayScene game;
   private boolean isNext = false;
+  private boolean countTurn = false;
   protected Ball ball;
 
+  //test
+  private boolean testBo = true;
+  private int tick = 0;
 
   public Rock(){
     info = "rock";
@@ -49,7 +53,8 @@ public class Rock extends Actor {
 
   }
 
-  public void  moveRock(Ball ball){
+  public void moveRock(Ball ball){
+
     this.ball = ball;
     shape.setVisible(true);
     Vector2 vt1 = new Vector2(shape.getX(), shape.getY());
@@ -59,6 +64,31 @@ public class Rock extends Actor {
       Actions.parallel(
         Actions.moveTo(shape.getX(), Config.HeightScreen + shape.getHeight(), dua,linear),
         GSimpleAction.simpleAction((d, a)->{
+
+          //test
+//          tick++;
+//          System.out.println("tick: " + tick);
+//          if(tick >= 40){
+//            tick = 0;
+//            if(testBo){
+//              testBo = false;
+//              shape.getColor().a = 0;
+//            }
+//            else {
+//              testBo = true;
+//              shape.getColor().a = 255;
+//            }
+//          }
+
+          //end test
+
+
+          if(countTurn){
+            if(shape.getY() >= Config.HeightScreen/2 + Config.HeightScreen/20){
+              game.score++;
+              countTurn = false;
+            }
+          }
           if(isNext){
             if(shape.getY() >= 0){
               game.lvtest.startLv();
@@ -93,10 +123,12 @@ public class Rock extends Actor {
 
   public void activeNext(){
     isNext = true;
+    countTurn = true;
   }
 
   protected void reset(){
     isNext = false;
+    countTurn = false;
     shape.setVisible(false);
   }
 

@@ -2,7 +2,6 @@ package com.ss.gameLogic.Level;
 
 
 import com.badlogic.gdx.utils.Array;
-import com.ss.gameLogic.objects.Ball;
 import com.ss.gameLogic.objects.ManageRocks;
 
 public class Level {
@@ -30,5 +29,9 @@ public class Level {
 
   public int getMode(int start, int end){
     return 0;
+  }
+
+  public int getTurn(){
+    return turn;
   }
 }

@@ -6,7 +6,7 @@ import com.ss.core.util.GAssetsManager;
 
 /* renamed from: com.ss.effect.SoundEffect */
 public class SoundEffect {
-  public static int MAX_COMMON = 4;
+  public static int MAX_COMMON = 5;
   public static Music bgSound = null;
   public static Music bgSound2 = null;
   public static Music bgSound3 = null;
@@ -17,6 +17,7 @@ public class SoundEffect {
   public static int broken = 1;
   public static int slideBall = 2;
   public static int lose = 3;
+  public static int tick = 4;
 
 
 
@@ -28,6 +29,7 @@ public class SoundEffect {
     commons[broken] = GAssetsManager.getSound("broken.mp3");
     commons[slideBall] = GAssetsManager.getSound("slideBall.mp3");
     commons[lose] = GAssetsManager.getSound("loseGame.mp3");
+    commons[tick] = GAssetsManager.getSound("tick.mp3");
 
 //        commons[coins] = GAssetsManager.getSound("Coin.mp3");
 //        commons[coins].setVolume(2,5);

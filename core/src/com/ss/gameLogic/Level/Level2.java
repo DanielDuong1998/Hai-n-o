@@ -133,18 +133,18 @@ public class Level2 extends Level {
   public int getMode(int start, int end) {
     int rs = (int) Math.floor(Math.random()*(end - start + 1) + start);
     tempRandom.add(rs);
-    if(tempRandom.size == 3){
-      if(tempRandom.get(0) == tempRandom.get(1) && tempRandom.get(0) == tempRandom.get(2)){
+    if(tempRandom.size == 2){
+      if(tempRandom.get(0) == tempRandom.get(1)){
         int temp = rs;
         while(temp == rs){
           temp = (int)Math.floor(Math.random()*(end - start + 1) + start);
         }
-        tempRandom.removeRange(0, 2);
+        tempRandom.removeRange(0, 1);
         System.out.println("size: " + tempRandom.size);
         return temp;
       }
       else {
-        tempRandom.removeRange(0, 2);
+        tempRandom.removeRange(0, 1);
         return rs;
       }
     }
@@ -186,7 +186,7 @@ public class Level2 extends Level {
       }
       case 40: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
 
         break;
@@ -200,21 +200,21 @@ public class Level2 extends Level {
       }
       case 60: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.75f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.65f;
+        Config.scaleTime[1] = 1.85f;
         System.out.println("log: " +turn);
 
         break;

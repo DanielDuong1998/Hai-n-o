@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.ss.commons.Tweens;
 import com.ss.core.util.GLayerGroup;
+import com.ss.effects.SoundEffect;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.Ball;
 
@@ -19,11 +20,11 @@ public class RightThumb extends Thumb {
     initShape();
     setPositionGroup();
     addTouchGroup();
-    this.ball.setPosition(Config.POSSITION_ROCK_X[2], Config.HeightScreen/2);
+    this.ball.setPosition(Config.POSSITION_ROCK_X[2], Config.HeightScreen/2 + Config.HeightScreen/20);
   }
 
   private void setPositionGroup(){
-    group.setPosition(Config.WidthScreen/2 + (group.getWidth()/2 + 10), Config.HeightScreen - group.getHeight()/2, Align.center);
+    group.setPosition(Config.WidthScreen*3/4, Config.HeightScreen - group.getHeight()/2, Align.center);
   }
 
   @Override
@@ -32,9 +33,10 @@ public class RightThumb extends Thumb {
     group.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        SoundEffect.Play(SoundEffect.slideBall);
         shapeUp.setVisible(false);
         shapeDown.setVisible(true);
-        ball.move(Config.POSSITION_ROCK_X[3], Config.HeightScreen/2);
+        ball.move(Config.POSSITION_ROCK_X[3], Config.HeightScreen/2 + Config.HeightScreen/20);
         return super.touchDown(event, x, y, pointer, button);
       }
 
@@ -43,7 +45,7 @@ public class RightThumb extends Thumb {
         super.touchUp(event, x, y, pointer, button);
         shapeDown.setVisible(false);
         shapeUp.setVisible(true);
-        ball.move(Config.POSSITION_ROCK_X[2], Config.HeightScreen/2);
+        ball.move(Config.POSSITION_ROCK_X[2], Config.HeightScreen/2 + Config.HeightScreen/20);
         //Tweens.setTimeout(group, 0.1f, ()->{ball.Overlap();});
       }
     });

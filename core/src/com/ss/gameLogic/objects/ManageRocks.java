@@ -2,7 +2,9 @@ package com.ss.gameLogic.objects;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
+import com.ss.commons.Tweens;
 import com.ss.core.util.GLayerGroup;
+import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.Rock.Rock;
 import com.ss.gameLogic.objects.Rock.Rock1;
 import com.ss.gameLogic.objects.Rock.Rock2;
@@ -122,5 +124,15 @@ public class ManageRocks {
       }
     }
     System.out.println("r2: " + temp);
+  }
+
+  public void reset(){
+    for(Array<Rock> rsk : rocks){
+      for(Rock r : rsk){
+        if(!r.isAvai){
+          r.setPosition1(Config.POSSITION_ROCK_X[0],  Config.POSSITION_ROCK_Y[1]);
+        }
+      }
+    }
   }
 }

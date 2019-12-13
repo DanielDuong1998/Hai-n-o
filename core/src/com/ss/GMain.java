@@ -16,6 +16,7 @@ import com.ss.core.util.GScreen;
 import com.ss.core.util.GStage;
 import com.ss.core.util.GStage.StageBorder;
 import com.ss.core.util.GUI;
+import com.ss.effects.SoundEffect;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.scenes.PlayScene;
 import com.ss.scenes.StartScene;
@@ -93,6 +94,7 @@ public class GMain extends GDirectedGame {
   {
     this.init();
     XAssetsManager.init();
+    SoundEffect.initSound();
     GMain.this.setScreen(menuScreen());
   }
   

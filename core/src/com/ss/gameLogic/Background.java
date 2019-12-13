@@ -25,7 +25,6 @@ public class Background {
     scrollStart();
   }
 
-  float accum = 0;
   private void initGroup(){
 
   }
@@ -108,6 +107,14 @@ public class Background {
 
   public void setPause(boolean isPause){
     group.setPause(isPause);
+  }
+
+  public void reset(){
+    bgImgs.get(0).setY(-2*(Config.HeightScreen-1));
+    bgImgs.get(1).setY(-1*(Config.HeightScreen-1));
+    bgImgs.get(2).setY(0*(Config.HeightScreen-1));
+
+    scrollStart();
   }
 
 }

@@ -9,6 +9,7 @@ public class Level {
   protected ManageRocks manageRocks;
   protected Array<Integer> modes;
   protected int turn = 0;
+  protected Array<Integer> tempRandom = new Array<>();
 
   protected void begin(){
 
@@ -20,5 +21,14 @@ public class Level {
 
   public void startLv(){
 
+  }
+
+  public void reset(){
+    turn = 0;
+    startLv();
+  }
+
+  public int getMode(int start, int end){
+    return 0;
   }
 }

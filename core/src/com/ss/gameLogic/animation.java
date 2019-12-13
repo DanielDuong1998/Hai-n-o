@@ -40,7 +40,6 @@ public class animation extends Actor {
     if((Math.floor(stateTime)<= tg.getFrameDuration()*tg.getKeyFrames().length)){
       batch.draw(t,x,y);
       return;
-
     }
     if(group.isPause()){
       TextureRegion t1 = tg.getKeyFrame(1);

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.Align;
 import com.ss.core.util.GLayerGroup;
 import com.ss.core.util.GUI;
 import com.ss.gameLogic.objects.Ball;
@@ -19,14 +20,14 @@ public class Thumb {
   protected void initGroup(){
     group = new GLayerGroup();
     groupF.addActor(group);
-    group.debug();
   }
 
   protected void initShape(){
     shapeDown = GUI.createImage(atlas, key + "D");
     shapeUp = GUI.createImage(atlas, key + "U");
     group.addActor(shapeDown);
-    shapeDown.setPosition(0,shapeUp.getHeight() - shapeDown.getHeight());
+    shapeUp.setPosition(shapeUp.getWidth()/2, shapeUp.getHeight()/2, Align.center);
+    shapeDown.setPosition(shapeDown.getWidth()/2, shapeUp.getHeight() - shapeDown.getHeight()/2, Align.center);
     System.out.println("y: " + (shapeUp.getHeight() - shapeDown.getHeight()));
     group.addActor(shapeUp);
     shapeDown.setVisible(false);

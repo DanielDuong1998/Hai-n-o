@@ -14,8 +14,8 @@ public class Ball {
 
   public Ball(GLayerGroup groupF){
     this.groupF = groupF;
-    w = 65;
-    h = 65;
+    w = 70;
+    h = 70;
     initGroup();
     initAni();
   }
@@ -23,13 +23,15 @@ public class Ball {
   private void initGroup(){
     group = new GLayerGroup();
     groupF.addActor(group);
-    group.debug();
   }
 
   private void initAni(){
     group.setSize(90, 90);
     aniR = new animation(group.getWidth()/2, group.getHeight()/2, "aniRock", 3, 1, 0.1f, false, true);
+    aniBr = new animation(group.getWidth()/2, group.getHeight()/2, "aniBroken", 4, 1, 0.1f, false, false);
     group.addActor(aniR);
+    group.addActor(aniBr);
+    aniBr.setVisible(false);
     //aniBr = new animation(Config.WidthScreen/2, Config.HeightScreen/2, "aniBroken", 4, 1, 0.1f, false, true);
   }
 
@@ -43,8 +45,8 @@ public class Ball {
 
   public void overlap(){
     aniR.setVisible(false);
-    aniBr = new animation(group.getWidth()/2, group.getHeight()/2, "aniBroken", 4, 1, 0.1f, false, false);
-    group.addActor(aniBr);
+    aniBr.setVisible(true);
+
   }
 
   public Vector2 getWH(){
@@ -52,12 +54,18 @@ public class Ball {
   }
 
   public Vector2 getXY(){
-    x = group.getX();
-    y = group.getY();
+    x = group.getX() + group.getWidth()/2;
+    y = group.getY() + group.getHeight()/2;
     return new Vector2(x, y);
   }
 
   public void setPause(boolean isPause){
     groupF.setPause(isPause);
+  }
+
+  public void reset(){
+    aniBr.setVisible(false);
+    aniR.setVisible(true);
+    setPause(false);
   }
 }

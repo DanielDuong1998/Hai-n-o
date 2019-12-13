@@ -120,8 +120,26 @@ public class Level1 extends Level {
     }
   }
 
-  private int getMode(){
-    return 1;
+  @Override
+  public int getMode(int start, int end) {
+    int rs = (int) Math.floor(Math.random()*(end - start + 1) + start);
+    tempRandom.add(rs);
+    if(tempRandom.size == 3){
+      if(tempRandom.get(0) == tempRandom.get(1) && tempRandom.get(0) == tempRandom.get(2)){
+        int temp = rs;
+        while(temp == rs){
+          temp = (int)Math.floor(Math.random()*(end - start + 1) + start);
+        }
+        tempRandom.removeRange(0, 2);
+        System.out.println("size: " + tempRandom.size);
+        return temp;
+      }
+      else {
+        tempRandom.removeRange(0, 2);
+        return rs;
+      }
+    }
+    return rs;
   }
 
   @Override
@@ -134,14 +152,17 @@ public class Level1 extends Level {
     if(turn >= 50){
       int percent = (int) Math.floor(Math.random()*100 + 1);
       if(percent <= 70){
-        mode = (int)Math.floor(Math.random()*4);
+        mode = getMode(0, 3);
+        //mode = (int)Math.floor(Math.random()*4);
       }
       else {
-        mode = (int)Math.floor(Math.random()*4 + 4);
+        mode = getMode(4, 7);
+        //mode = (int)Math.floor(Math.random()*4 + 4);
       }
     }
     else {
-      mode = (int)Math.floor(Math.random()*4);
+      mode = getMode(0, 3);
+      //mode = (int)Math.floor(Math.random()*4);
     }
 
     System.out.println("random: " + mode);
@@ -153,7 +174,7 @@ public class Level1 extends Level {
     switch (turn){
       case 1: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.2f;
+        Config.scaleTime[1] = 1f;
         System.out.println("log: " +turn);
         break;
       }

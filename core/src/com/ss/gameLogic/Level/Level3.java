@@ -182,8 +182,55 @@ public class Level3 extends Level {
     }
   }
 
-  private int getMode(){
-    return 1;
+  private boolean check(int checkN, Array<Integer> nums){
+    for(int num : nums){
+      if(checkN == num){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private int checkMode(Array<Integer> tempArr){
+    Array<Integer> nums = new Array<>();
+    nums.add(0, 4, 5, 6);
+    nums.add(7);
+    if(check(tempArr.get(0), nums) && check(tempArr.get(1), nums)){
+      int temp = tempArr.get(1);
+      while (check(temp, nums)){
+        temp = (int)Math.floor(Math.random()*10);
+      }
+      tempArr.removeRange(0, 1);
+      return temp;
+    }
+    else {
+      nums.removeRange(0, 4);
+      nums.add(1, 2, 3, 8);
+      nums.add(9);
+      if(check(tempArr.get(0), nums) && check(tempArr.get(1), nums)){
+        int temp = tempArr.get(1);
+        while (check(temp, nums)){
+          temp = (int)Math.floor(Math.random()*10);
+        }
+        tempArr.removeRange(0, 1);
+        return temp;
+      }
+      else {
+        int temp = tempArr.get(1);
+        tempArr.removeRange(0, 1);
+        return temp;
+      }
+    }
+  }
+
+  @Override
+  public int getMode(int start, int end) {
+    int rs = (int)Math.floor(Math.random()*(end - start + 1) + start);
+    tempRandom.add(rs);
+    if(tempRandom.size == 2){
+      return checkMode(tempRandom);
+    }
+    return rs;
   }
 
   @Override
@@ -192,7 +239,8 @@ public class Level3 extends Level {
     updateTimeScroll();
     System.out.println("turn: " + turn);
     int length = 10;
-    int mode = (int)Math.floor(Math.random()*length);
+    //int mode = (int)Math.floor(Math.random()*length);
+    int mode = getMode(0, 9);
     System.out.println("random: " + mode);
     start(mode);
     //manageRocks.getSize();

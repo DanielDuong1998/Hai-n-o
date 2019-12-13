@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Align;
 import com.ss.core.action.exAction.GSimpleAction;
 import com.ss.core.util.GLayerGroup;
 import com.ss.core.util.GUI;
+import com.ss.effects.SoundEffect;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.Ball;
 import com.ss.scenes.PlayScene;
@@ -40,13 +41,15 @@ public class Rock extends Actor {
   protected void initShape(){
     shape = GUI.createImage(atlas, info);
     group.addActor(shape);
+
   }
 
   public void setPosition1(float x, float y){
     shape.setPosition(x, y, Align.center);
+
   }
 
-  public void moveRock(Ball ball){
+  public void  moveRock(Ball ball){
     this.ball = ball;
     shape.setVisible(true);
     Vector2 vt1 = new Vector2(shape.getX(), shape.getY());
@@ -63,11 +66,14 @@ public class Rock extends Actor {
             }
           }
           else{
-            if(checkOverlap(new Vector2(shape.getWidth(), shape.getHeight()), ball.getWH(), new Vector2(shape.getX(), shape.getY()),ball.getXY())){
+            if(checkOverlap(new Vector2(shape.getWidth(), shape.getHeight()), ball.getWH(), new Vector2(shape.getX() + shape.getWidth()/2, shape.getY() + shape.getHeight()/2),ball.getXY())){
+              SoundEffect.Play(SoundEffect.broken);
+              SoundEffect.Stopmusic(1);
               System.out.println("overlap!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
               ball.overlap();
               ball.setPause(true);
               group.setPause(true);
+              game.endGame();
             }
           }
             return true;
@@ -112,16 +118,11 @@ public class Rock extends Actor {
   }
 
   private boolean isPointOfRect(Vector2 p, Vector2 whRect, Vector2 pRect) {
-    System.out.println("--------------------------------------------------------------------------");
-    System.out.println("px -- (pRectx - whRect.x/2): " + p.x + "-" + (pRect.x - whRect.x / 2));
-    System.out.println("px -- (pRect.x + whRect.x/2): " + p.x + "-" + (pRect.x + whRect.x / 2));
-    System.out.println("py -- (pRect.y - whRect.y/2): " + p.y + "-" + (pRect.y - whRect.y / 2));
-    System.out.println("py -- (pRect.y + whRect.y/2): " + p.y + "-" + (pRect.y + whRect.y / 2));
     if (p.x >= pRect.x - whRect.x / 2 && p.x <= pRect.x + whRect.x / 2 && p.y >= pRect.y - whRect.y / 2 && p.y <= pRect.y + whRect.y / 2){
-      System.out.println("true");
+      //System.out.println("true");
       return true;
     }
-    System.out.println("false");
+    //System.out.println("false");
     return false;
   }
 }

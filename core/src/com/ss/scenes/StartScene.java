@@ -1,6 +1,5 @@
 package com.ss.scenes;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Group;
@@ -10,19 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
-import com.ss.GMain;
 import com.ss.commons.Tweens;
-import com.ss.core.action.exAction.GSimpleAction;
 import com.ss.core.exSprite.GShapeSprite;
-import com.ss.core.transitions.GTransition;
-import com.ss.core.transitions.GTransitionFade;
-import com.ss.core.transitions.GTransitionRotationScale;
-import com.ss.core.transitions.GTransitionSlice;
 import com.ss.core.util.GAssetsManager;
 import com.ss.core.util.GLayer;
 import com.ss.core.util.GScreen;
 import com.ss.core.util.GStage;
 import com.ss.core.util.GUI;
+import com.ss.effects.SoundEffect;
 import com.ss.gameLogic.StaticObjects.Config;
 
 public class StartScene extends GScreen {
@@ -32,13 +26,12 @@ public class StartScene extends GScreen {
 
   @Override
   public void dispose() {
-    group.remove();
-    group.clear();
-    atlas.dispose();
+
   }
 
   @Override
   public void init() {
+    SoundEffect.Playmusic(2);
     initAtlas();
     initGroup();
     initUI();
@@ -69,15 +62,16 @@ public class StartScene extends GScreen {
     startBtn.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        startBtn.setTouchable(Touchable.disabled);
-        startBtn.addAction(Actions.sequence(
-          Actions.scaleBy(-0.3f, -0.3f, 0.05f, Interpolation.swingIn),
-          Actions.scaleBy(0.3f, 0.3f, 0.05f, Interpolation.sineOut)
-        ));
-        Tweens.setTimeout(group, 0.1f, ()->{
-          nextScene();
-        });
-        return super.touchDown(event, x, y, pointer, button);
+      startBtn.setTouchable(Touchable.disabled);
+      SoundEffect.Play(SoundEffect.click);
+      startBtn.addAction(Actions.sequence(
+        Actions.scaleBy(-0.3f, -0.3f, 0.05f, Interpolation.swingIn),
+        Actions.scaleBy(0.3f, 0.3f, 0.05f, Interpolation.sineOut)
+      ));
+      Tweens.setTimeout(group, 0.1f, ()->{
+        nextScene();
+      });
+      return super.touchDown(event, x, y, pointer, button);
       }
     });
   }
@@ -90,8 +84,8 @@ public class StartScene extends GScreen {
   }
 
   private void nextScene(){
-    darkScreen();
-    setScreen(new ChooseScene(), GTransitionFade.init(0.5f));
+    //darkScreen();
+    setScreen(new ChooseScene());
   }
 
 

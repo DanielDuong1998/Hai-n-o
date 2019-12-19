@@ -140,11 +140,13 @@ public class Level2 extends Level {
           temp = (int)Math.floor(Math.random()*(end - start + 1) + start);
         }
         tempRandom.removeRange(0, 1);
+        tempRandom.add(temp);
         System.out.println("size: " + tempRandom.size);
         return temp;
       }
       else {
         tempRandom.removeRange(0, 1);
+        tempRandom.add(rs);
         return rs;
       }
     }

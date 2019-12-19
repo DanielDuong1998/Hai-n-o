@@ -129,7 +129,7 @@ public class ChooseScene extends GScreen {
           Actions.scaleBy(-0.3f, -0.3f, 0.05f, Interpolation.swingIn),
           Actions.scaleBy(0.3f, 0.3f, 0.05f, Interpolation.sineOut),
           GSimpleAction.simpleAction((d, a)->{
-            setScreen(new StartScene());
+            setScreen(new ModeScene());
             return true;
           })
         ));

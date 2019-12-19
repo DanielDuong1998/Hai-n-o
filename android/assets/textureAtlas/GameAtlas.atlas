@@ -6,140 +6,175 @@ filter: Nearest,Nearest
 repeat: none
 1
   rotate: false
-  xy: 1790, 1648
+  xy: 1945, 1833
   size: 96, 172
   orig: 96, 172
   offset: 0, 0
   index: -1
 2
   rotate: false
-  xy: 2, 124
+  xy: 1808, 1650
   size: 125, 175
   orig: 125, 175
   offset: 0, 0
   index: -1
 3
   rotate: false
-  xy: 1790, 1822
+  xy: 1808, 1827
   size: 135, 178
   orig: 135, 178
   offset: 0, 0
   index: -1
+bannerEndGame
+  rotate: false
+  xy: 2, 461
+  size: 720, 100
+  orig: 720, 100
+  offset: 0, 0
+  index: -1
+bestTxt
+  rotate: false
+  xy: 1808, 1383
+  size: 118, 118
+  orig: 118, 118
+  offset: 0, 0
+  index: -1
 bg
   rotate: false
-  xy: 2, 720
+  xy: 2, 725
   size: 720, 1280
   orig: 720, 1280
   offset: 0, 0
   index: -1
 bgEndGame
   rotate: false
-  xy: 724, 720
+  xy: 724, 725
   size: 720, 1280
   orig: 720, 1280
   offset: 0, 0
   index: -1
 btnTest
   rotate: false
-  xy: 1446, 869
+  xy: 688, 297
   size: 214, 71
   orig: 214, 71
   offset: 0, 0
   index: -1
 continueBtn
   rotate: false
-  xy: 726, 173
+  xy: 1446, 644
   size: 500, 166
   orig: 500, 166
   offset: 0, 0
   index: -1
+finish
+  rotate: false
+  xy: 2, 563
+  size: 720, 160
+  orig: 720, 160
+  offset: 0, 0
+  index: -1
 leftD
   rotate: false
-  xy: 364, 306
+  xy: 1446, 1174
   size: 360, 412
   orig: 360, 412
   offset: 0, 0
   index: -1
 leftU
   rotate: false
-  xy: 1446, 1136
+  xy: 346, 28
   size: 340, 431
   orig: 340, 431
   offset: 0, 0
   index: -1
 lobbyBtn
   rotate: false
-  xy: 2, 2
+  xy: 688, 66
   size: 122, 120
   orig: 122, 120
   offset: 0, 0
   index: -1
 pauseBtn
   rotate: false
-  xy: 1446, 778
+  xy: 1808, 1292
   size: 90, 89
   orig: 90, 89
   offset: 0, 0
   index: -1
 point
   rotate: false
-  xy: 1208, 546
+  xy: 2, 2
   size: 22, 24
   orig: 22, 24
   offset: 0, 0
   index: -1
 quitBtn
   rotate: false
-  xy: 726, 341
+  xy: 1446, 812
   size: 500, 166
   orig: 500, 166
   offset: 0, 0
   index: -1
 readyTxt
   rotate: false
-  xy: 726, 509
+  xy: 724, 479
   size: 480, 209
   orig: 480, 209
   offset: 0, 0
   index: -1
+redLine
+  rotate: false
+  xy: 724, 690
+  size: 720, 33
+  orig: 720, 33
+  offset: 0, 0
+  index: -1
 replayBtn
   rotate: false
-  xy: 1446, 942
+  xy: 1446, 980
   size: 335, 192
   orig: 335, 192
   offset: 0, 0
   index: -1
+reportTxt
+  rotate: false
+  xy: 724, 370
+  size: 422, 107
+  orig: 422, 107
+  offset: 0, 0
+  index: -1
 rightD
   rotate: false
-  xy: 2, 301
+  xy: 1446, 1588
   size: 360, 417
   orig: 360, 417
   offset: 0, 0
   index: -1
 rightU
   rotate: false
-  xy: 1446, 1569
+  xy: 2, 28
   size: 342, 431
   orig: 342, 431
   offset: 0, 0
   index: -1
 rock1
   rotate: false
-  xy: 129, 192
+  xy: 688, 188
   size: 143, 107
   orig: 143, 107
   offset: 0, 0
   index: -1
 rock2
   rotate: false
-  xy: 1927, 1855
+  xy: 1808, 1503
   size: 117, 145
   orig: 117, 145
   offset: 0, 0
   index: -1
 rock3
   rotate: false
-  xy: 1208, 572
+  xy: 1206, 542
   size: 159, 146
   orig: 159, 146
   offset: 0, 0

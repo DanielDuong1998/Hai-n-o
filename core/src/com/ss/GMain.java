@@ -1,23 +1,18 @@
 package com.ss;
 
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Group;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.platform.IPlatform;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.ss.assetManager.XAssetsManager;
-import com.ss.commons.Tweens;
 import com.ss.core.exSprite.particle.GParticleSystem;
-import com.ss.core.util.GAssetsManager;
 import com.ss.core.util.GDirectedGame;
-import com.ss.core.util.GLayer;
 import com.ss.core.util.GScreen;
 import com.ss.core.util.GStage;
 import com.ss.core.util.GStage.StageBorder;
-import com.ss.core.util.GUI;
 import com.ss.effects.SoundEffect;
-import com.ss.gameLogic.StaticObjects.Config;
+import com.ss.scenes.ModeScene;
 import com.ss.scenes.PlayScene;
 import com.ss.scenes.StartScene;
 
@@ -30,6 +25,7 @@ public class GMain extends GDirectedGame {
   public static final int testType = 2;
   public static TextureAtlas textureAtlas;
   public static float ratioX, ratioY;
+  public static Preferences prefs;
 
   public static IPlatform platform;
   public GMain(IPlatform plat){
@@ -90,9 +86,14 @@ public class GMain extends GDirectedGame {
     return new StartScene();
   }
 
+  private void initPrefs(){
+    prefs = Gdx.app.getPreferences("My Preferences");
+  }
+
   public void create()
   {
     this.init();
+    initPrefs();
     XAssetsManager.init();
     SoundEffect.initSound();
     GMain.this.setScreen(menuScreen());

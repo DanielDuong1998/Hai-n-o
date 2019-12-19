@@ -5,17 +5,24 @@ import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.ManageRocks;
 import com.ss.gameLogic.objects.Rock.Rock;
 
-public class Level3 extends Level {
+public class LevelInfinity extends Level {
+
   private int padding = 20;
 
-  public Level3(ManageRocks manageRocks){
+  public LevelInfinity(ManageRocks manageRocks){
     this.manageRocks = manageRocks;
     startLv();
   }
 
-  @Override
-  protected void begin() {
-    super.begin();
+  private int getId(){
+    int percent = (int) Math.floor(Math.random()*100 + 1);
+    if(percent <= 70){
+      return 3;
+    }
+    else if(percent <= 90){
+      return 2;
+    }
+    else return 4;
   }
 
   @Override
@@ -25,7 +32,7 @@ public class Level3 extends Level {
       case 0: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
@@ -38,7 +45,7 @@ public class Level3 extends Level {
       case 1: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
@@ -51,7 +58,7 @@ public class Level3 extends Level {
       case 2: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
@@ -64,7 +71,7 @@ public class Level3 extends Level {
       case 3: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
@@ -79,7 +86,7 @@ public class Level3 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         Rock rock3 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id] - rock1.getHeightS()/2 - rock2.getHeightS()/2 - padding);
@@ -96,7 +103,7 @@ public class Level3 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         Rock rock3 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id] - rock1.getHeightS()/2 - rock2.getHeightS()/2 - padding);
@@ -112,7 +119,7 @@ public class Level3 extends Level {
       case 6: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock1.getHeightS()/2 - rock2.getHeightS()/2 - padding);
@@ -126,7 +133,7 @@ public class Level3 extends Level {
       case 7: {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
@@ -141,7 +148,7 @@ public class Level3 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         Rock rock3 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
@@ -158,7 +165,7 @@ public class Level3 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         Rock rock3 = manageRocks.getRock();
-        int id = 2;
+        int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
@@ -168,6 +175,92 @@ public class Level3 extends Level {
         rock2.moveRock(manageRocks.ballr);
         rock3.moveRock(manageRocks.balll);
         rock2.activeNext();
+
+        break;
+      }
+      case 10: {
+        Rock rock1 = manageRocks.getRock();
+        Rock rock2 = manageRocks.getRock();
+        Rock rock3 = manageRocks.getRock();
+        Rock rock4 = manageRocks.getRock();
+        int id = getId();
+
+        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+        rock3.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+        rock4.setPosition1(Config.POSSITION_ROCK_X[2], rock3.getY() - rock3.getHeightS()/2 - rock4.getHeightS()/2);
+
+        rock1.moveRock(manageRocks.balll);
+        rock2.moveRock(manageRocks.balll);
+        rock3.moveRock(manageRocks.ballr);
+        rock4.moveRock(manageRocks.ballr);
+        rock4.activeNext();
+
+        break;
+      }
+      case 11: {
+        Rock rock1 = manageRocks.getRock();
+        Rock rock2 = manageRocks.getRock();
+        Rock rock3 = manageRocks.getRock();
+        Rock rock4 = manageRocks.getRock();
+        int id = getId();
+
+        rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+        rock3.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+        rock4.setPosition1(Config.POSSITION_ROCK_X[1], rock3.getY() - rock3.getHeightS()/2 - rock4.getHeightS()/2);
+
+        rock1.moveRock(manageRocks.ballr);
+        rock2.moveRock(manageRocks.ballr);
+        rock3.moveRock(manageRocks.balll);
+        rock4.moveRock(manageRocks.balll);
+        rock4.activeNext();
+
+        break;
+      }
+      case 12: {
+        Rock rock1 = manageRocks.getRock();
+        Rock rock2 = manageRocks.getRock();
+        Rock rock3 = manageRocks.getRock();
+        Rock rock4 = manageRocks.getRock();
+        Rock rock5 = manageRocks.getRock();
+        int id = getId();
+
+        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+        rock3.setPosition1(Config.POSSITION_ROCK_X[0], rock2.getY() - rock3.getHeightS()/2 - rock2.getHeightS()/2 - padding);
+        rock4.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
+        rock5.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock5.getHeightS()/2 - rock4.getHeightS()/2 - padding);
+
+        rock1.moveRock(manageRocks.balll);
+        rock2.moveRock(manageRocks.balll);
+        rock3.moveRock(manageRocks.balll);
+        rock4.moveRock(manageRocks.ballr);
+        rock5.moveRock(manageRocks.ballr);
+        rock3.activeNext();
+
+        break;
+      }
+      case 13: {
+        Rock rock1 = manageRocks.getRock();
+        Rock rock2 = manageRocks.getRock();
+        Rock rock3 = manageRocks.getRock();
+        Rock rock4 = manageRocks.getRock();
+        Rock rock5 = manageRocks.getRock();
+        int id = getId();
+
+        rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
+        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+        rock3.setPosition1(Config.POSSITION_ROCK_X[3], rock2.getY() - rock3.getHeightS()/2 - rock2.getHeightS()/2 - padding);
+        rock4.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
+        rock5.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock5.getHeightS()/2 - rock4.getHeightS()/2 - padding);
+
+        rock1.moveRock(manageRocks.ballr);
+        rock2.moveRock(manageRocks.ballr);
+        rock3.moveRock(manageRocks.ballr);
+        rock4.moveRock(manageRocks.balll);
+        rock5.moveRock(manageRocks.balll);
+        rock3.activeNext();
 
         break;
       }
@@ -233,79 +326,115 @@ public class Level3 extends Level {
   public void startLv() {
     super.startLv();
     updateTimeScroll();
-    System.out.println("turn: " + turn);
-    int length = 10;
-    //int mode = (int)Math.floor(Math.random()*length);
     int mode = getMode(0, 9);
-    System.out.println("random: " + mode);
     start(mode);
-    //manageRocks.getSize();
   }
 
   protected void updateTimeScroll(){
+    System.out.println("scaleTime: " + Config.scaleTime[1] + " turn: " + turn);
     switch (turn){
       case 0: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
         break;
       }
       case 10: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
         break;
       }
       case 20: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.6f;
+        Config.scaleTime[1] = 1.65f;
         System.out.println("log: " +turn);
         break;
       }
       case 30: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.6f;
+        Config.scaleTime[1] = 1.7f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 40: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.6f;
+        Config.scaleTime[1] = 1.75f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 50: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.7f;
+        Config.scaleTime[1] = 1.8f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 60: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.7f;
+        Config.scaleTime[1] = 1.85f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.8f;
+        Config.scaleTime[1] = 1.9f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.9f;
+        Config.scaleTime[1] = 1.95f;
         System.out.println("log: " +turn);
 
         break;
       }
+      case 90: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2;
+        System.out.println("log: " +turn);
 
-      default: break;
+        break;
+      }
+      case 100: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.1f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 110: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.2f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 120: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.4f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 130: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.5f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 140: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.7f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
     }
   }
 }

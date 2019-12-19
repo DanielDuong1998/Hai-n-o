@@ -27,6 +27,7 @@ import com.ss.gameLogic.Level.Level;
 import com.ss.gameLogic.Level.Level1;
 import com.ss.gameLogic.Level.Level2;
 import com.ss.gameLogic.Level.Level3;
+import com.ss.gameLogic.Level.LevelInfinity;
 import com.ss.gameLogic.PanelEndGame;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.Ball;
@@ -72,10 +73,10 @@ public class PlayScene extends GScreen {
     initAtlas();
     initGroup();
     initBackground();
+    initBitmapfont();
     initUI();
     initDarkScreen();
     initCountDownTxt();
-    initBitmapfont();
 
     balll = new Ball(groupF);
     ballr = new Ball(groupF);
@@ -96,7 +97,10 @@ public class PlayScene extends GScreen {
       public void act(float var1) {
       super.act(var1);
         if(labelScore != null){
-          labelScore.setText(score + "%");
+          if(Config.modeSelecting == 0)
+            labelScore.setText(score + "m");
+          else labelScore.setText(score + "%");
+
         }
       }
     };
@@ -133,6 +137,10 @@ public class PlayScene extends GScreen {
     manageRocks = new ManageRocks(atlas, foreGroundGroup, balll, ballr, this);
 
     switch (Config.modeSelecting){
+      case 0: {
+        lvtest = new LevelInfinity(manageRocks);
+        break;
+      }
       case 1: {
         lvtest = new Level1(manageRocks);
         break;
@@ -155,7 +163,7 @@ public class PlayScene extends GScreen {
   }
 
   private void initUI(){
-    panelEndGame = new PanelEndGame(atlas, endGameGroup, this);
+    panelEndGame = new PanelEndGame(atlas, endGameGroup, this, score);
 
     pauseBtn = GUI.createImage(atlas, "pauseBtn");
     continueBtn = GUI.createImage(atlas, "continueBtn");
@@ -322,7 +330,7 @@ public class PlayScene extends GScreen {
   }
 
   public void menu(){
-    setScreen(new ChooseScene());
+    setScreen(new ModeScene());
   }
 
   public void lobby(){
@@ -333,18 +341,24 @@ public class PlayScene extends GScreen {
   public void endGame(){
     Tweens.setTimeout(endGameGroup, 0.5f, ()->{
       SoundEffect.Play(SoundEffect.lose);
+      SoundEffect.Playmusic(2);
+      panelEndGame.setScore(score);
       panelEndGame.setVisibleGroup(true);
     });
   }
 
+  public BitmapFont getFont(){
+    return font;
+  }
+
   public void replay(){
     setScreen(new PlayScene());
-//    panelEndGame.setVisibleGroup(false);
-//    background.reset();
-//    manageRocks.reset();
-//    balll.reset();
-//    ballr.reset();
-//    foreGroundGroup.setPause(false);
-//    lvtest.reset();
+
+  }
+//
+  public int getTurn(){
+    if(lvtest != null)
+      return lvtest.getTurn();
+    return 0;
   }
 }

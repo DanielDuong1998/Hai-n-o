@@ -21,11 +21,12 @@ public class Rock extends Actor {
   protected TextureAtlas atlas;
   protected GLayerGroup group;
   protected Image shape;
-  public boolean isAvai = true;
   protected PlayScene game;
+  protected Ball ball;
+
+  public boolean isAvai = true;
   private boolean isNext = false;
   private boolean countTurn = false;
-  protected Ball ball;
 
   //test
   private boolean testBo = true;
@@ -124,6 +125,77 @@ public class Rock extends Actor {
   public void activeNext(){
     isNext = true;
     countTurn = true;
+    showRedLine();
+  }
+
+  private void showRedLine(){
+    System.out.println("enter best score");
+    switch (Config.modeSelecting){
+      case 1: {
+        System.out.println("turn-bestScore1: " + game.getTurn() + "-" + Config.bestScoreLv1);
+        if(game.getTurn() == Config.bestScoreLv1){
+          System.out.println("enter best score 1");
+          Image redLine = GUI.createImage(atlas, "redLine");
+          Image bestTxt = GUI.createImage(atlas, "bestTxt");
+          group.addActor(redLine);
+          group.addActor(bestTxt);
+          redLine.setPosition(0, shape.getY() - redLine.getHeight());
+          bestTxt.setPosition(Config.POSSITION_ROCK_X[0], shape.getY() - redLine.getHeight() - bestTxt.getHeight()/2, Align.center);
+          float dua = (Config.HeightScreen + shape.getHeight() - redLine.getY())/Config.velocity;
+          redLine.addAction(Actions.moveTo(0, Config.HeightScreen + shape.getHeight(), dua, linear));
+
+          float dua1 = (Config.HeightScreen + shape.getHeight() - bestTxt.getY())/Config.velocity;
+          bestTxt.addAction(Actions.moveTo(bestTxt.getX(), Config.HeightScreen + shape.getHeight(), dua1, linear));
+
+        }
+        break;
+      }
+      case 2: {
+        System.out.println("turn-bestScore2: " + game.getTurn() + "-" + Config.bestScoreLv2);
+        if(game.getTurn() == Config.bestScoreLv2){
+          Image redLine = GUI.createImage(atlas, "redLine");
+          Image bestTxt = GUI.createImage(atlas, "bestTxt");
+          group.addActor(redLine);
+          group.addActor(bestTxt);
+          redLine.setPosition(0, shape.getY() - redLine.getHeight());
+          bestTxt.setPosition(Config.POSSITION_ROCK_X[0], shape.getY() - redLine.getHeight() - bestTxt.getHeight()/2, Align.center);
+
+          Vector2 vt1 = new Vector2(redLine.getX(), redLine.getY());
+          Vector2 vt2 = new Vector2(0, Config.HeightScreen + shape.getHeight());
+          //float dua = Config.module(vt1, vt2)/Config.velocity;
+          float dua = (Config.HeightScreen + shape.getHeight() - redLine.getY())/Config.velocity;
+          redLine.addAction(Actions.moveTo(0, Config.HeightScreen + shape.getHeight(), dua, linear));
+
+          float dua1 = (Config.HeightScreen + shape.getHeight() - bestTxt.getY())/Config.velocity;
+          bestTxt.addAction(Actions.moveTo(bestTxt.getX(), Config.HeightScreen + shape.getHeight(), dua1, linear));
+        }
+        break;
+      }
+      case 3: {
+        System.out.println("turn-bestScore3: " + game.getTurn() + "-" + Config.bestScoreLv3);
+        if(game.getTurn() == Config.bestScoreLv3){
+          Image redLine = GUI.createImage(atlas, "redLine");
+          Image bestTxt = GUI.createImage(atlas, "bestTxt");
+          group.addActor(redLine);
+          group.addActor(bestTxt);
+          redLine.setPosition(0, shape.getY() - redLine.getHeight());
+          bestTxt.setPosition(Config.POSSITION_ROCK_X[0], shape.getY() - redLine.getHeight() - bestTxt.getHeight()/2, Align.center);
+
+          Vector2 vt1 = new Vector2(redLine.getX(), redLine.getY());
+          Vector2 vt2 = new Vector2(0, Config.HeightScreen + shape.getHeight());
+          //float dua = Config.module(vt1, vt2)/Config.velocity;
+          float dua = (Config.HeightScreen + shape.getHeight() - redLine.getY())/Config.velocity;
+          redLine.addAction(Actions.moveTo(0, Config.HeightScreen + shape.getHeight(), dua, linear));
+
+          float dua1 = (Config.HeightScreen + shape.getHeight() - bestTxt.getY())/Config.velocity;
+          bestTxt.addAction(Actions.moveTo(bestTxt.getX(), Config.HeightScreen + shape.getHeight(), dua1, linear));
+        }
+        break;
+      }
+      default: {
+        break;
+      }
+    }
   }
 
   protected void reset(){

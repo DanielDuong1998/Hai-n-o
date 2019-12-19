@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
+import com.ss.GMain;
 import com.ss.commons.Tweens;
 import com.ss.core.exSprite.GShapeSprite;
 import com.ss.core.util.GAssetsManager;
@@ -32,9 +33,17 @@ public class StartScene extends GScreen {
   @Override
   public void init() {
     SoundEffect.Playmusic(2);
+    getPrefs();
     initAtlas();
     initGroup();
     initUI();
+  }
+
+  private void getPrefs(){
+    Config.bestScoreInf = GMain.prefs.getInteger("BestScoreInf", 0);
+    Config.bestScoreLv1 = GMain.prefs.getInteger("BestScoreLv1",0);
+    Config.bestScoreLv2 = GMain.prefs.getInteger("BestScoreLv2",0);
+    Config.bestScoreLv3 = GMain.prefs.getInteger("BestScoreLv3",0);
   }
 
   private void initAtlas(){
@@ -85,7 +94,7 @@ public class StartScene extends GScreen {
 
   private void nextScene(){
     //darkScreen();
-    setScreen(new ChooseScene());
+    setScreen(new ModeScene());
   }
 
 

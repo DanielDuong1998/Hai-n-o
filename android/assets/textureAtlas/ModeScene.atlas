@@ -1,0 +1,41 @@
+
+ModeScene.png
+size: 1024,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+backBtn
+  rotate: false
+  xy: 724, 1670
+  size: 250, 83
+  orig: 250, 83
+  offset: 0, 0
+  index: -1
+bg
+  rotate: false
+  xy: 2, 473
+  size: 720, 1280
+  orig: 720, 1280
+  offset: 0, 0
+  index: -1
+challengeBtn
+  rotate: false
+  xy: 2, 137
+  size: 500, 166
+  orig: 500, 166
+  offset: 0, 0
+  index: -1
+infinityBtn
+  rotate: false
+  xy: 2, 305
+  size: 500, 166
+  orig: 500, 166
+  offset: 0, 0
+  index: -1
+modeTitle
+  rotate: false
+  xy: 2, 2
+  size: 400, 133
+  orig: 400, 133
+  offset: 0, 0
+  index: -1

@@ -32,6 +32,7 @@ public class Level {
   }
 
   public int getTurn(){
+    System.out.println("turn here!: " + turn);
     return turn;
   }
 }

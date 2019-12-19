@@ -193,13 +193,6 @@ public class Level1 extends Level {
     }
   }
 
-  private void initMode(){
-    modes = new Array<>();
-    for(int i = 0; i < 8; i++){
-      modes.add(i);
-    }
-  }
-
   @Override
   public int getMode(int start, int end) {
     int rs = (int) Math.floor(Math.random()*(end - start + 1) + start);
@@ -211,11 +204,13 @@ public class Level1 extends Level {
           temp = (int)Math.floor(Math.random()*(end - start + 1) + start);
         }
         tempRandom.removeRange(0, 1);
+        tempRandom.add(temp);
         System.out.println("size: " + tempRandom.size);
         return temp;
       }
       else {
         tempRandom.removeRange(0, 1);
+        tempRandom.add(rs);
         return rs;
       }
     }

@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.ss.GMain;
 import com.ss.commons.Tweens;
+import com.ss.core.action.exAction.GSimpleAction;
 import com.ss.core.exSprite.GShapeSprite;
 import com.ss.core.util.GAssetsManager;
 import com.ss.core.util.GLayer;
@@ -23,7 +24,7 @@ import com.ss.gameLogic.StaticObjects.Config;
 public class StartScene extends GScreen {
   private TextureAtlas atlas;
   private Group group;
-  private Image bg, startBtn;
+  private Image bg, startBtn, title, speaker, speakerOff;
 
   @Override
   public void dispose() {
@@ -58,12 +59,64 @@ public class StartScene extends GScreen {
   private void initUI(){
     bg = GUI.createImage(atlas, "bg");
     startBtn = GUI.createImage(atlas, "startBtn");
+    title = GUI.createImage(atlas, "titleGame");
+    speaker = GUI.createImage(atlas, "speaker");
+    speakerOff = GUI.createImage(atlas, "speakerOff");
+
     bg.setHeight(bg.getHeight()*Config.ratioY);
     group.addActor(bg);
     group.addActor(startBtn);
+    group.addActor(title);
+    group.addActor(speaker);
+    group.addActor(speakerOff);
+
+    title.setPosition(Config.WidthScreen/2, Config.HeightScreen/3, Align.center);
+    title.setOrigin(Align.center);
+    speaker.setPosition(Config.WidthScreen/10, Config.HeightScreen/10, Align.center);
+    speakerOff.setPosition(Config.WidthScreen/10, Config.HeightScreen/10, Align.center);
+    speakerOff.setVisible(false);
     startBtn.setPosition(Config.WidthScreen/2, 2*Config.HeightScreen/3, Align.center);
     startBtn.setOrigin(Align.center);
     addEventStartBtn();
+    effectTitle();
+    eventSpeaker();
+  }
+
+  private void effectTitle(){
+    title.addAction(Actions.sequence(
+      Actions.scaleBy(-0.3f, -0.3f, 1.5f, Interpolation.fastSlow),
+      Actions.scaleBy(0.3f, 0.3f, 1.5f, Interpolation.slowFast),
+      GSimpleAction.simpleAction((d, a)->{
+        effectTitle();
+        return true;
+      })
+    ));
+  }
+
+  private void eventSpeaker(){
+    speaker.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        SoundEffect.mute = true;
+        SoundEffect.music = false;
+        speaker.setVisible(false);
+        speakerOff.setVisible(true);
+        SoundEffect.Stopmusic(2);
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
+    speakerOff.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        SoundEffect.mute = false;
+        SoundEffect.music = true;
+        SoundEffect.Play(SoundEffect.click);
+        SoundEffect.Playmusic(2);
+        speakerOff.setVisible(false);
+        speaker.setVisible(true);
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
   }
 
 

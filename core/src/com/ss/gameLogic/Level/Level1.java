@@ -1,6 +1,5 @@
 package com.ss.gameLogic.Level;
 
-import com.badlogic.gdx.utils.Array;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.ManageRocks;
 import com.ss.gameLogic.objects.Rock.Rock;
@@ -8,6 +7,8 @@ import com.ss.gameLogic.objects.Rock.Rock;
 public class Level1 extends Level {
   public Level1(ManageRocks manageRocks){
     this.manageRocks = manageRocks;
+    Config.scaleTime[0] = 1000;
+    Config.scaleTime[1] = 1.2f;
     startLv();
   }
 
@@ -238,6 +239,10 @@ public class Level1 extends Level {
     }
 
     System.out.println("random: " + mode);
+    if(turn > 99){
+      System.out.println("end");
+      return;
+    }
     start(mode);
   }
 
@@ -245,13 +250,13 @@ public class Level1 extends Level {
     switch (turn){
       case 1: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1f;
+        Config.scaleTime[1] = 1.2f;
         System.out.println("log: " +turn);
         break;
       }
       case 10: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.2f;
+        Config.scaleTime[1] = 1.3f;
         System.out.println("log: " +turn);
         break;
       }
@@ -263,42 +268,42 @@ public class Level1 extends Level {
       }
       case 30: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 40: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 50: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.7f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 60: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.8f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.6f;
+        Config.scaleTime[1] = 1.8f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.8f;
+        Config.scaleTime[1] = 1.9f;
         System.out.println("log: " +turn);
 
         break;

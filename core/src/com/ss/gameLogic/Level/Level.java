@@ -1,7 +1,9 @@
 package com.ss.gameLogic.Level;
 
 
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
+import com.ss.core.util.GUI;
 import com.ss.gameLogic.objects.ManageRocks;
 
 public class Level {
@@ -9,6 +11,7 @@ public class Level {
   protected Array<Integer> modes;
   protected int turn = 0;
   protected Array<Integer> tempRandom = new Array<>();
+  protected Image finishRace;
 
   protected void begin(){
 

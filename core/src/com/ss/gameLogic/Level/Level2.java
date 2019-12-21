@@ -1,6 +1,5 @@
 package com.ss.gameLogic.Level;
 
-import com.badlogic.gdx.utils.Array;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.gameLogic.objects.ManageRocks;
 import com.ss.gameLogic.objects.Rock.Rock;
@@ -8,6 +7,8 @@ import com.ss.gameLogic.objects.Rock.Rock;
 public class Level2 extends Level {
   public Level2(ManageRocks manageRocks){
     this.manageRocks = manageRocks;
+    Config.scaleTime[0] = 1000;
+    Config.scaleTime[1] = 1.3f;
     startLv();
   }
 
@@ -24,6 +25,9 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
@@ -37,6 +41,9 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
@@ -50,6 +57,9 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
@@ -63,6 +73,9 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
         rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
@@ -76,6 +89,9 @@ public class Level2 extends Level {
       case 4: {
         Rock rock1 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
 
@@ -87,6 +103,9 @@ public class Level2 extends Level {
       case 5: {
         Rock rock1 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
 
@@ -98,6 +117,9 @@ public class Level2 extends Level {
       case 6: {
         Rock rock1 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
 
@@ -109,6 +131,9 @@ public class Level2 extends Level {
       case 7: {
         Rock rock1 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
+        if(turn >=70){
+          id = 1;
+        }
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
 
@@ -118,13 +143,6 @@ public class Level2 extends Level {
         break;
       }
       default: break;
-    }
-  }
-
-  private void initMode(){
-    modes = new Array<>();
-    for(int i = 0; i < 8; i++){
-      modes.add(i);
     }
   }
 
@@ -159,8 +177,16 @@ public class Level2 extends Level {
     updateTimeScroll();
     System.out.println("turn: " + turn);
     int length = turn >= 50 ? 8 : 4;
-    int mode = (int)Math.floor(Math.random()*length);
+    int mode;
+    if(turn >= 50){
+      mode = getMode(0,7);
+    }
+    else mode = getMode(0,3);
     System.out.println("random: " + mode);
+    if(turn > 99){
+      System.out.println("end");
+      return;
+    }
     start(mode);
     //manageRocks.getSize();
   }
@@ -169,54 +195,61 @@ public class Level2 extends Level {
     switch (turn){
       case 10: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.3f;
+        Config.scaleTime[1] = 1.4f;
         System.out.println("log: " +turn);
         break;
       }
       case 20: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
         break;
       }
       case 30: {
-        Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
-        System.out.println("log: " +turn);
-
-        break;
-      }
-      case 40: {
-        Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
-        System.out.println("log: " +turn);
-
-        break;
-      }
-      case 50: {
-        Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
-        System.out.println("log: " +turn);
-
-        break;
-      }
-      case 60: {
         Config.scaleTime[0] = 1000;
         Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
 
         break;
       }
+      case 40: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 1.7f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 50: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 1.8f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 60: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 1.9f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.75f;
+        Config.scaleTime[1] = 2f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.85f;
+        Config.scaleTime[1] = 2.1f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 90: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.2f;
         System.out.println("log: " +turn);
 
         break;

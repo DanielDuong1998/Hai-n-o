@@ -93,6 +93,7 @@ public class ModeScene extends GScreen {
         SoundEffect.Play(SoundEffect.click);
         effectClickBtn(btn, ()->{
           Config.modeSelecting = 0;
+          SoundEffect.Stopmusic(2);
           setScreen(new PlayScene());
         });
         return super.touchDown(event, x, y, pointer, button);

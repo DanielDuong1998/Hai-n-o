@@ -10,6 +10,8 @@ public class Level3 extends Level {
 
   public Level3(ManageRocks manageRocks){
     this.manageRocks = manageRocks;
+    Config.scaleTime[0] = 1000;
+    Config.scaleTime[1] = 1.4f;
     startLv();
   }
 
@@ -234,12 +236,13 @@ public class Level3 extends Level {
     super.startLv();
     updateTimeScroll();
     System.out.println("turn: " + turn);
-    int length = 10;
-    //int mode = (int)Math.floor(Math.random()*length);
     int mode = getMode(0, 9);
     System.out.println("random: " + mode);
+    if(turn > 99){
+      System.out.println("end");
+      return;
+    }
     start(mode);
-    //manageRocks.getSize();
   }
 
   protected void updateTimeScroll(){
@@ -252,7 +255,7 @@ public class Level3 extends Level {
       }
       case 10: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
         break;
       }
@@ -264,42 +267,49 @@ public class Level3 extends Level {
       }
       case 30: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.6f;
+        Config.scaleTime[1] = 1.7f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 40: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.6f;
+        Config.scaleTime[1] = 1.8f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 50: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.7f;
+        Config.scaleTime[1] = 1.9f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 60: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.7f;
+        Config.scaleTime[1] = 2f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.8f;
+        Config.scaleTime[1] = 2.1f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.9f;
+        Config.scaleTime[1] = 2.2f;
+        System.out.println("log: " +turn);
+
+        break;
+      }
+      case 90: {
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 2.3f;
         System.out.println("log: " +turn);
 
         break;

@@ -12,6 +12,7 @@ import com.ss.core.util.GScreen;
 import com.ss.core.util.GStage;
 import com.ss.core.util.GStage.StageBorder;
 import com.ss.effects.SoundEffect;
+import com.ss.scenes.ChooseScene;
 import com.ss.scenes.ModeScene;
 import com.ss.scenes.PlayScene;
 import com.ss.scenes.StartScene;

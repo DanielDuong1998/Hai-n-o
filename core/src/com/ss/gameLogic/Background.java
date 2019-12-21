@@ -22,7 +22,7 @@ public class Background {
     this.group = group;
     initGroup();
     initBackGround();
-    scrollStart();
+    //scrollStart();
   }
 
   private void initGroup(){
@@ -114,6 +114,10 @@ public class Background {
     bgImgs.get(1).setY(-1*(Config.HeightScreen-1));
     bgImgs.get(2).setY(0*(Config.HeightScreen-1));
 
+    scrollStart();
+  }
+
+  public void activeScroll(){
     scrollStart();
   }
 

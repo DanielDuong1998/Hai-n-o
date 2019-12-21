@@ -11,6 +11,8 @@ public class LevelInfinity extends Level {
 
   public LevelInfinity(ManageRocks manageRocks){
     this.manageRocks = manageRocks;
+    Config.scaleTime[0] = 1000;
+    Config.scaleTime[1] = 1.6f;
     startLv();
   }
 
@@ -335,7 +337,7 @@ public class LevelInfinity extends Level {
     switch (turn){
       case 0: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
         break;
       }

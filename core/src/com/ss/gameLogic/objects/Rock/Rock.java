@@ -1,5 +1,6 @@
 package com.ss.gameLogic.objects.Rock;
 
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -60,7 +61,8 @@ public class Rock extends Actor {
     shape.setVisible(true);
     Vector2 vt1 = new Vector2(shape.getX(), shape.getY());
     Vector2 vt2 = new Vector2(shape.getX(), Config.HeightScreen + shape.getHeight());
-    float dua = Config.module(vt1, vt2)/Config.velocity;
+    //float dua = Config.module(vt1, vt2)/Config.velocity;
+    float dua = (Config.HeightScreen + shape.getHeight() - shape.getY())/Config.velocity;
     shape.addAction(Actions.sequence(
       Actions.parallel(
         Actions.moveTo(shape.getX(), Config.HeightScreen + shape.getHeight(), dua,linear),
@@ -80,6 +82,7 @@ public class Rock extends Actor {
 //              shape.getColor().a = 255;
 //            }
 //          }
+          //shape.getColor().a = 0;
 
           //end test
 
@@ -126,6 +129,9 @@ public class Rock extends Actor {
     isNext = true;
     countTurn = true;
     showRedLine();
+    if(game.getTurn() == 100){
+      showFinishRace();
+    }
   }
 
   private void showRedLine(){
@@ -133,7 +139,7 @@ public class Rock extends Actor {
     switch (Config.modeSelecting){
       case 1: {
         System.out.println("turn-bestScore1: " + game.getTurn() + "-" + Config.bestScoreLv1);
-        if(game.getTurn() == Config.bestScoreLv1){
+        if(game.getTurn() == Config.bestScoreLv1 && Config.bestScoreLv1 != 100){
           System.out.println("enter best score 1");
           Image redLine = GUI.createImage(atlas, "redLine");
           Image bestTxt = GUI.createImage(atlas, "bestTxt");
@@ -152,7 +158,7 @@ public class Rock extends Actor {
       }
       case 2: {
         System.out.println("turn-bestScore2: " + game.getTurn() + "-" + Config.bestScoreLv2);
-        if(game.getTurn() == Config.bestScoreLv2){
+        if(game.getTurn() == Config.bestScoreLv2 && Config.bestScoreLv2 != 100){
           Image redLine = GUI.createImage(atlas, "redLine");
           Image bestTxt = GUI.createImage(atlas, "bestTxt");
           group.addActor(redLine);
@@ -173,7 +179,7 @@ public class Rock extends Actor {
       }
       case 3: {
         System.out.println("turn-bestScore3: " + game.getTurn() + "-" + Config.bestScoreLv3);
-        if(game.getTurn() == Config.bestScoreLv3){
+        if(game.getTurn() == Config.bestScoreLv3 && Config.bestScoreLv3 != 100){
           Image redLine = GUI.createImage(atlas, "redLine");
           Image bestTxt = GUI.createImage(atlas, "bestTxt");
           group.addActor(redLine);
@@ -195,6 +201,29 @@ public class Rock extends Actor {
       default: {
         break;
       }
+    }
+  }
+
+  private void showFinishRace(){
+    if(Config.modeSelecting != 0){
+      Image finishRace = GUI.createImage(atlas, "finish");
+      group.addActor(finishRace);
+      finishRace.setPosition(0, shape.getY() - shape.getHeight()-finishRace.getHeight());
+      float dua = (Config.HeightScreen-finishRace.getY())/Config.velocity;
+      System.out.println("dua: " + dua + " y: " + finishRace.getY());
+      finishRace.addAction(Actions.parallel(
+        Actions.moveTo(0, Config.HeightScreen, dua, linear),
+        GSimpleAction.simpleAction((d, a)->{
+          if(finishRace.getY() > ball.getXY().y + ball.getWH().y/2){
+            SoundEffect.Stopmusic(1);
+            SoundEffect.Play(SoundEffect.win);
+            ball.setPause(true);
+            group.setPause(true);
+            game.endGame();
+          }
+          return true;
+        })
+      ));
     }
   }
 

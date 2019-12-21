@@ -22,6 +22,7 @@ public class Config {
   public static int bestScoreLv1 = 0;
   public static int bestScoreLv2 = 0;
   public static int bestScoreLv3 = 0;
+  public static boolean showHelpStart = true;
 
 
   //method

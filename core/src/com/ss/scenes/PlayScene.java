@@ -2,7 +2,6 @@ package com.ss.scenes;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -56,8 +55,11 @@ public class PlayScene extends GScreen {
   int tick = 0;
   public int score = 0;
 
-  private BitmapFont font;
+  private BitmapFont font, fontPlayBall;
   private Label labelScore;
+  private Image underFrame, frameScore;
+  private Image power;
+  private Image helpStartImg;
 
 
   @Override
@@ -77,13 +79,19 @@ public class PlayScene extends GScreen {
     initUI();
     initDarkScreen();
     initCountDownTxt();
+    if(Config.showHelpStart){
+      Config.showHelpStart = false;
+      initHelp();
+    }
+    else{
+      background.activeScroll();
+      balll = new Ball(groupF);
+      ballr = new Ball(groupF);
 
-    balll = new Ball(groupF);
-    ballr = new Ball(groupF);
-
-    thumbl = new LeftThumb(atlas, groupF, balll);
-    thumbr = new RightThumb(atlas, groupF, ballr);
-    startGame();
+      thumbl = new LeftThumb(atlas, groupF, balll);
+      thumbr = new RightThumb(atlas, groupF, ballr);
+      startGame();
+    }
 
   }
 
@@ -99,8 +107,10 @@ public class PlayScene extends GScreen {
         if(labelScore != null){
           if(Config.modeSelecting == 0)
             labelScore.setText(score + "m");
-          else labelScore.setText(score + "%");
-
+          else {
+            labelScore.setText(score + "%");
+            power.setScaleX(score*0.01f);
+          }
         }
       }
     };
@@ -171,7 +181,7 @@ public class PlayScene extends GScreen {
     pauseGroup.addActor(pauseBtn);
     pauseGroup.addActor(continueBtn);
     pauseGroup.addActor(quitBtn);
-    pauseBtn.setPosition(Config.WidthScreen/8, Config.HeightScreen/20, Align.center);
+    pauseBtn.setPosition(Config.WidthScreen/8, Config.HeightScreen/18, Align.center);
     continueBtn.setPosition(Config.WidthScreen/2, Config.HeightScreen/2 - continueBtn.getHeight(), Align.center);
     quitBtn.setPosition(Config.WidthScreen/2, Config.HeightScreen/2 + continueBtn.getHeight(), Align.center);
     pauseBtn.setOrigin(Align.center);
@@ -231,6 +241,8 @@ public class PlayScene extends GScreen {
       quitBtn.setTouchable(Touchable.disabled);
       SoundEffect.Play(SoundEffect.click);
       clickBtnEffect(quitBtn, ()->{
+        SoundEffect.Stopmusic(1);
+        Config.showHelpStart = true;
         setScreen(new StartScene());
       });
       return super.touchDown(event, x, y, pointer, button);
@@ -270,10 +282,55 @@ public class PlayScene extends GScreen {
     three.setVisible(false);
   }
 
+  private void initHelp(){
+    helpStartImg = GUI.createImage(atlas, "helpStart");
+    helpStartImg.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
+    GLayerGroup groupDark = new GLayerGroup();
+    GStage.addToLayer(GLayer.top, groupDark);
+    blackOverlay = new GShapeSprite();
+    blackOverlay.createRectangle(true, -GStage.getWorldWidth()/2,-GStage.getWorldHeight()/2, GStage.getWorldWidth()*2, GStage.getWorldHeight()*2);
+    groupDark.addActor(blackOverlay);
+    groupDark.addActor(helpStartImg);
+    blackOverlay.setVisible(true);
+    blackOverlay.setColor(0, 0, 0, 0.3f);
+    eventHelp(helpStartImg, groupDark);
+  }
+
+  private void eventHelp(Image img, GLayerGroup group){
+    img.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        group.remove();
+        group.clear();
+        background.activeScroll();
+        balll = new Ball(groupF);
+        ballr = new Ball(groupF);
+
+        thumbl = new LeftThumb(atlas, groupF, balll);
+        thumbr = new RightThumb(atlas, groupF, ballr);
+        startGame();
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
+  }
+
   private void initBitmapfont(){
-    font = GAssetsManager.getBitmapFont("font_white.fnt");
-    labelScore = new Label("" + 0, new Label.LabelStyle(font, null));
-    labelScore.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
+    underFrame = GUI.createImage(atlas, "underFrame");
+    power = GUI.createImage(atlas, "power");
+    frameScore = GUI.createImage(atlas, "frame");
+
+    font = GAssetsManager.getBitmapFont("sigmarOne.fnt");
+    fontPlayBall = GAssetsManager.getBitmapFont("playBall.fnt");
+    labelScore = new Label("" + 0, new Label.LabelStyle(fontPlayBall, null));
+
+    mainGroup.addActor(underFrame);
+    mainGroup.addActor(power);
+    mainGroup.addActor(frameScore);
+    underFrame.setPosition(Config.WidthScreen*3.5f/5, Config.HeightScreen/17f, Align.center);
+    power.setPosition(Config.WidthScreen*3.5f/5, Config.HeightScreen/17f, Align.center);
+    frameScore.setPosition(Config.WidthScreen*3.5f/5, Config.HeightScreen/18, Align.center);
+    power.setScaleX(0);
+    labelScore.setPosition(frameScore.getX() + frameScore.getWidth()/2, frameScore.getY() + frameScore.getHeight()*1.25f/2, Align.center);
     mainGroup.addActor(labelScore);
   }
 

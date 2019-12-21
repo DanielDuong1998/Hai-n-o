@@ -23,6 +23,7 @@ public class PanelEndGame {
   private PlayScene game;
   private int score, bestScore;
   private Label scoreTxt, bestScoreTxt;
+  private Image newRecord;
 
   public PanelEndGame(TextureAtlas atlas, GLayerGroup group, PlayScene game, int score){
     this.atlas = atlas;
@@ -40,6 +41,7 @@ public class PanelEndGame {
           Config.bestScoreInf = score;
           GMain.prefs.putInteger("BestScoreInf", score);
           GMain.prefs.flush();
+          newRecord.setVisible(true);
         }
         break;
       }
@@ -50,6 +52,8 @@ public class PanelEndGame {
           GMain.prefs.putInteger("BestScoreLv1", score);
           GMain.prefs.flush();
           System.out.println("Best score lv1");
+          newRecord.setVisible(true);
+
         }
         break;
       }
@@ -59,6 +63,8 @@ public class PanelEndGame {
           GMain.prefs.putInteger("BestScoreLv2", score);
           GMain.prefs.flush();
           System.out.println("Best score lv2");
+          newRecord.setVisible(true);
+
         }
         break;
       }
@@ -68,6 +74,7 @@ public class PanelEndGame {
           GMain.prefs.putInteger("BestScoreLv3", score);
           GMain.prefs.flush();
           System.out.println("Best score lv3");
+          newRecord.setVisible(true);
         }
         break;
       }
@@ -83,11 +90,16 @@ public class PanelEndGame {
     lobbyBtn = GUI.createImage(atlas, "lobbyBtn");
     banner = GUI.createImage(atlas, "bannerEndGame");
     title = GUI.createImage(atlas, "reportTxt");
+    newRecord = GUI.createImage(atlas, "newRecord");
     group.addActor(bg);
     group.addActor(replayBtn);
     group.addActor(lobbyBtn);
     group.addActor(banner);
     group.addActor(title);
+    group.addActor(newRecord);
+
+    newRecord.setPosition(Config.WidthScreen*1.1f/2, Config.HeightScreen/3, Align.center);
+    newRecord.setVisible(false);
     bg.setHeight(bg.getHeight()*Config.ratioY);
 
     replayBtn.setOrigin(Align.center);
@@ -105,7 +117,8 @@ public class PanelEndGame {
 
     scoreTxt = new Label(""+score, new Label.LabelStyle(game.getFont(), null));
     group.addActor(scoreTxt);
-    scoreTxt.setPosition(Config.WidthScreen/3, Config.HeightScreen*3.5f/10, Align.center);
+    scoreTxt.setFontScale(1.5f);
+    scoreTxt.setPosition(Config.WidthScreen/3, Config.HeightScreen*3.53f/10, Align.center);
 
     bestScoreTxt = new Label(""+bestScore, new Label.LabelStyle(game.getFont(), null));
     bestScoreTxt.setFontScale(0.8f);
@@ -163,9 +176,10 @@ public class PanelEndGame {
       SoundEffect.Play(SoundEffect.click);
       SoundEffect.Stopmusic(2);
       clickBtnEffect(lobbyBtn, ()->{
-        Config.scaleTime[0] = 0;
-        Config.scaleTime[1] = 4;
+        Config.scaleTime[0] = 1000;
+        Config.scaleTime[1] = 1;
         SoundEffect.Playmusic(2);
+        Config.showHelpStart = true;
         game.menu();
       });
       return super.touchDown(event, x, y, pointer, button);

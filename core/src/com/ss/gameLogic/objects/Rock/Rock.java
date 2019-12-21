@@ -137,6 +137,23 @@ public class Rock extends Actor {
   private void showRedLine(){
     System.out.println("enter best score");
     switch (Config.modeSelecting){
+      case 0: {
+        if(game.getTurn() == Config.bestScoreInf ){
+          Image redLine = GUI.createImage(atlas, "redLine");
+          Image bestTxt = GUI.createImage(atlas, "bestTxt");
+          group.addActor(redLine);
+          group.addActor(bestTxt);
+          redLine.setPosition(0, shape.getY() - redLine.getHeight());
+          bestTxt.setPosition(Config.POSSITION_ROCK_X[0], shape.getY() - redLine.getHeight() - bestTxt.getHeight()/2, Align.center);
+          float dua = (Config.HeightScreen + shape.getHeight() - redLine.getY())/Config.velocity;
+          redLine.addAction(Actions.moveTo(0, Config.HeightScreen + shape.getHeight(), dua, linear));
+
+          float dua1 = (Config.HeightScreen + shape.getHeight() - bestTxt.getY())/Config.velocity;
+          bestTxt.addAction(Actions.moveTo(bestTxt.getX(), Config.HeightScreen + shape.getHeight(), dua1, linear));
+
+        }
+        break;
+      }
       case 1: {
         System.out.println("turn-bestScore1: " + game.getTurn() + "-" + Config.bestScoreLv1);
         if(game.getTurn() == Config.bestScoreLv1 && Config.bestScoreLv1 != 100){

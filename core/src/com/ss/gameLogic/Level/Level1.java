@@ -112,19 +112,9 @@ public class Level1 extends Level {
       }
       case 4: {
         Rock rock1 = manageRocks.getRock();
-        int id = 1;
-        if(turn >= 60){
-          int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
-            id = 0;
-          }
-          else {
-            id = 1;
-          }
-        }
+        int id = 0;
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
-
         rock1.moveRock(manageRocks.balll);
         rock1.activeNext();
 
@@ -132,17 +122,7 @@ public class Level1 extends Level {
       }
       case 5: {
         Rock rock1 = manageRocks.getRock();
-        int id = 1;
-        if(turn >= 60){
-          int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
-            id = 0;
-          }
-          else {
-            id = 1;
-          }
-        }
-
+        int id = 0;
         rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
 
         rock1.moveRock(manageRocks.balll);
@@ -152,16 +132,7 @@ public class Level1 extends Level {
       }
       case 6: {
         Rock rock1 = manageRocks.getRock();
-        int id = 1;
-        if(turn >= 60){
-          int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
-            id = 0;
-          }
-          else {
-            id = 1;
-          }
-        }
+        int id = 0;
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
 
@@ -172,16 +143,7 @@ public class Level1 extends Level {
       }
       case 7: {
         Rock rock1 = manageRocks.getRock();
-        int id = 1;
-        if(turn >= 60){
-          int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
-            id = 0;
-          }
-          else {
-            id = 1;
-          }
-        }
+        int id = 0;
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
 

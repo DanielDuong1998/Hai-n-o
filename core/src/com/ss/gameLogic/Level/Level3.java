@@ -11,7 +11,7 @@ public class Level3 extends Level {
   public Level3(ManageRocks manageRocks){
     this.manageRocks = manageRocks;
     Config.scaleTime[0] = 1000;
-    Config.scaleTime[1] = 1.4f;
+    Config.scaleTime[1] = 1.5f;
     startLv();
   }
 
@@ -249,13 +249,13 @@ public class Level3 extends Level {
     switch (turn){
       case 0: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
         break;
       }
       case 10: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
         break;
       }
@@ -281,35 +281,35 @@ public class Level3 extends Level {
       }
       case 50: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.9f;
+        Config.scaleTime[1] = 2f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 60: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2f;
+        Config.scaleTime[1] = 2.1f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2.1f;
+        Config.scaleTime[1] = 2.2f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2.2f;
+        Config.scaleTime[1] = 2.3f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 90: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2.3f;
+        Config.scaleTime[1] = 2.5f;
         System.out.println("log: " +turn);
 
         break;

@@ -8,10 +8,12 @@ import com.ss.gameLogic.objects.Rock.Rock;
 public class Level3 extends Level {
   private int padding = 20;
 
-  public Level3(ManageRocks manageRocks){
+  public Level3(ManageRocks manageRocks, int turn){
     this.manageRocks = manageRocks;
-    Config.scaleTime[0] = 1000;
-    Config.scaleTime[1] = 1.5f;
+    this.turn = turn;
+    Config.scaleTime[0] = Config.scaleTimeCtn[0];
+    Config.scaleTime[1] = Config.scaleTimeCtn[1];
+    System.out.println("time-scale: " + Config.scaleTime[0] + "-" + Config.scaleTime[1]);
     startLv();
   }
 

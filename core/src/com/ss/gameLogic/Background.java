@@ -16,6 +16,7 @@ public class Background {
   private TextureAtlas atlas;
   private GLayerGroup group;
   private Array<Image> bgImgs;
+  private int indexTop = 0;
 
   public Background(TextureAtlas atlas, GLayerGroup group){
     this.atlas = atlas;
@@ -23,6 +24,7 @@ public class Background {
     initGroup();
     initBackGround();
     //scrollStart();
+    //letGo();
   }
 
   private void initGroup(){
@@ -35,8 +37,9 @@ public class Background {
     for(int i = 0; i < 3; i++) {
       initBgTexture();
     }
-    bgImgs.get(0).setY(-2*(Config.HeightScreen-1));
-    bgImgs.get(1).setY(-1*(Config.HeightScreen-1));
+    bgImgs.get(0).setY(-2*(bgImgs.get(0).getHeight()-1));
+    bgImgs.get(1).setY(-1*(bgImgs.get(0).getHeight()-1));
+    //bgImgs.get(2).setY(-1);
   }
   // end init
 
@@ -109,16 +112,49 @@ public class Background {
     group.setPause(isPause);
   }
 
-  public void reset(){
-    bgImgs.get(0).setY(-2*(Config.HeightScreen-1));
-    bgImgs.get(1).setY(-1*(Config.HeightScreen-1));
-    bgImgs.get(2).setY(0*(Config.HeightScreen-1));
+  private void letGo(){
+    for(Image bg : bgImgs){
+      moveBgUd(bg,bgImgs.indexOf(bg, true));
+    }
+  }
 
-    scrollStart();
+  private void moveBgUd(Image bg, int index){
+    float dua = ((Config.HeightScreen) - bg.getY())/Config.velocity;
+    System.out.println("kc: " + (bg.getHeight()));
+    bg.addAction(Actions.sequence(
+      Actions.moveTo(0, Config.HeightScreen, dua, Interpolation.linear),
+      GSimpleAction.simpleAction((d, a)->{
+        startBg(bg, index);
+        return true;
+      })
+    ));
+  }
+
+  private void startBg(Image bg, int index){
+    bg.setPosition(0, bgImgs.get(indexTop).getY() - bg.getHeight() + 1);
+    indexTop = index;
+    float dua = (bgImgs.get(0).getHeight() - bg.getY())/Config.velocity;
+    bg.addAction(Actions.sequence(
+      Actions.moveTo(0, bgImgs.get(0).getHeight(), dua, Interpolation.linear),
+      GSimpleAction.simpleAction((d, a)->{
+        startBg(bg, index);
+        return true;
+      })
+    ));
+  }
+
+  public void reset(){
+    bgImgs.get(0).setY(-2*(Config.HeightScreen -1));
+    bgImgs.get(1).setY(-1*(Config.HeightScreen -1));
+    bgImgs.get(2).setY(0*(Config.HeightScreen -1));
+
+    //scrollStart();
+    letGo();
   }
 
   public void activeScroll(){
-    scrollStart();
+    //scrollStart();
+    letGo();
   }
 
 }

@@ -5,10 +5,11 @@ import com.ss.gameLogic.objects.ManageRocks;
 import com.ss.gameLogic.objects.Rock.Rock;
 
 public class Level1 extends Level {
-  public Level1(ManageRocks manageRocks){
+  public Level1(ManageRocks manageRocks, int turn){
     this.manageRocks = manageRocks;
-    Config.scaleTime[0] = 1000;
-    Config.scaleTime[1] = 1.2f;
+    this.turn = turn;
+    Config.scaleTime[0] = Config.scaleTimeCtn[0];
+    Config.scaleTime[1] = Config.scaleTimeCtn[1];
     startLv();
   }
 

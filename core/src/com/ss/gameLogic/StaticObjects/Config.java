@@ -23,6 +23,10 @@ public class Config {
   public static int bestScoreLv2 = 0;
   public static int bestScoreLv3 = 0;
   public static boolean showHelpStart = true;
+  public static boolean isContinue = false;
+
+  public static int scoreCtn = 0;
+  public static float[] scaleTimeCtn = new float[]{0, 0};
 
 
   //method

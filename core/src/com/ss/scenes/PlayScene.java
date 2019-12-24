@@ -50,7 +50,7 @@ public class PlayScene extends GScreen {
 
   private Image pauseBtn, continueBtn, quitBtn;
   private Array<Image> txtCountDown;
-  private GShapeSprite blackOverlay;
+  private GShapeSprite blackOverlay, blackOverlay2;
   private PanelEndGame panelEndGame;
   int tick = 0;
   public int score = 0;
@@ -60,6 +60,8 @@ public class PlayScene extends GScreen {
   private Image underFrame, frameScore;
   private Image power;
   private Image helpStartImg;
+
+  private int turnGame = 0;
 
 
   @Override
@@ -90,9 +92,39 @@ public class PlayScene extends GScreen {
 
       thumbl = new LeftThumb(atlas, groupF, balll);
       thumbr = new RightThumb(atlas, groupF, ballr);
+      if(Config.isContinue){
+        setUpContinue();
+      }
+      else {
+        setUpTimeScale();
+      }
       startGame();
     }
+  }
 
+  private void setUpTimeScale(){
+    switch (Config.modeSelecting){
+      case 0: {
+        Config.scaleTimeCtn[0] = 1000;
+        Config.scaleTimeCtn[1] = 1.6f;
+        break;
+      }
+      case 1: {
+        Config.scaleTimeCtn[0] = 1000;
+        Config.scaleTimeCtn[1] = 1.2f;
+        break;
+      }
+      case 2: {
+        Config.scaleTimeCtn[0] = 1000;
+        Config.scaleTimeCtn[1] = 1.3f;
+        break;
+      }
+      case 3: {
+        Config.scaleTimeCtn[0] = 1000;
+        Config.scaleTimeCtn[1] = 1.5f;
+        break;
+      }
+    }
   }
 
   private void initAtlas(){
@@ -148,19 +180,19 @@ public class PlayScene extends GScreen {
 
     switch (Config.modeSelecting){
       case 0: {
-        lvtest = new LevelInfinity(manageRocks);
+        lvtest = new LevelInfinity(manageRocks, turnGame);
         break;
       }
       case 1: {
-        lvtest = new Level1(manageRocks);
+        lvtest = new Level1(manageRocks, turnGame);
         break;
       }
       case 2: {
-        lvtest = new Level2(manageRocks);
+        lvtest = new Level2(manageRocks, turnGame);
         break;
       }
       case 3: {
-        lvtest = new Level3(manageRocks);
+        lvtest = new Level3(manageRocks, turnGame);
         break;
       }
     }
@@ -287,17 +319,17 @@ public class PlayScene extends GScreen {
     helpStartImg.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
     GLayerGroup groupDark = new GLayerGroup();
     GStage.addToLayer(GLayer.top, groupDark);
-    blackOverlay = new GShapeSprite();
-    blackOverlay.createRectangle(true, -GStage.getWorldWidth()/2,-GStage.getWorldHeight()/2, GStage.getWorldWidth()*2, GStage.getWorldHeight()*2);
-    groupDark.addActor(blackOverlay);
+    blackOverlay2 = new GShapeSprite();
+    blackOverlay2.createRectangle(true, -GStage.getWorldWidth()/2,-GStage.getWorldHeight()/2, GStage.getWorldWidth()*2, GStage.getWorldHeight()*2);
+    groupDark.addActor(blackOverlay2);
     groupDark.addActor(helpStartImg);
-    blackOverlay.setVisible(true);
-    blackOverlay.setColor(0, 0, 0, 0.3f);
-    eventHelp(helpStartImg, groupDark);
+    blackOverlay2.setVisible(true);
+    blackOverlay2.setColor(0, 0, 0, 0.3f);
+    eventHelp(groupDark);
   }
 
-  private void eventHelp(Image img, GLayerGroup group){
-    img.addListener(new ClickListener(){
+  private void eventHelp(GLayerGroup group){
+    group.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
         group.remove();
@@ -308,10 +340,12 @@ public class PlayScene extends GScreen {
 
         thumbl = new LeftThumb(atlas, groupF, balll);
         thumbr = new RightThumb(atlas, groupF, ballr);
+        setUpTimeScale();
         startGame();
         return super.touchDown(event, x, y, pointer, button);
       }
     });
+
   }
 
   private void initBitmapfont(){
@@ -396,6 +430,7 @@ public class PlayScene extends GScreen {
 
 
   public void endGame(){
+    groupF.setTouchable(Touchable.disabled);
     Tweens.setTimeout(endGameGroup, 0.5f, ()->{
       SoundEffect.Play(SoundEffect.lose);
       SoundEffect.Playmusic(2);
@@ -410,7 +445,30 @@ public class PlayScene extends GScreen {
 
   public void replay(){
     setScreen(new PlayScene());
+  }
 
+  public void coninue(){
+    Config.isContinue = true;
+    Config.scoreCtn = score;
+    Config.scaleTimeCtn[0] = Config.scaleTime[0];
+    Config.scaleTimeCtn[1] = Config.scaleTime[1];
+    System.out.println("time-rto: " + Config.scaleTimeCtn[0] + "-" + Config.scaleTimeCtn[1]);
+    setScreen(new PlayScene());
+  }
+
+  public void setUpContinue(){
+    Config.isContinue = false;
+    turnGame = Config.scoreCtn;
+    if(Config.modeSelecting != 0){
+      labelScore.setText(turnGame + "%");
+    }
+    else {
+      labelScore.setText(turnGame + "m");
+    }
+    score = turnGame;
+    Config.scaleTime[0] = Config.scaleTimeCtn[0];
+    Config.scaleTime[1] = Config.scaleTimeCtn[1];
+    power.setScaleX(0.01f*1);
   }
 //
   public int getTurn(){

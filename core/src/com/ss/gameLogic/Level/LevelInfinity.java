@@ -9,10 +9,11 @@ public class LevelInfinity extends Level {
 
   private int padding = 20;
 
-  public LevelInfinity(ManageRocks manageRocks){
+  public LevelInfinity(ManageRocks manageRocks, int turn){
     this.manageRocks = manageRocks;
-    Config.scaleTime[0] = 1000;
-    Config.scaleTime[1] = 1.6f;
+    this.turn = turn;
+    Config.scaleTime[0] = Config.scaleTimeCtn[0];
+    Config.scaleTime[1] = Config.scaleTimeCtn[1];
     startLv();
   }
 

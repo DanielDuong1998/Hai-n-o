@@ -1,9 +1,7 @@
 package com.ss.gameLogic.objects.Thumb;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.ss.core.util.GLayerGroup;
 import com.ss.core.util.GUI;

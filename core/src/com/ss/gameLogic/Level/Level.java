@@ -3,7 +3,6 @@ package com.ss.gameLogic.Level;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.Array;
-import com.ss.core.util.GUI;
 import com.ss.gameLogic.objects.ManageRocks;
 
 public class Level {
@@ -37,5 +36,9 @@ public class Level {
   public int getTurn(){
     System.out.println("turn here!: " + turn);
     return turn;
+  }
+
+  public void setTurn(int turn){
+    this.turn = turn;
   }
 }

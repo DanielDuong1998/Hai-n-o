@@ -28,6 +28,9 @@ public class Config {
   public static int scoreCtn = 0;
   public static float[] scaleTimeCtn = new float[]{0, 0};
 
+  public static int numberAd = 1;
+  public static int countAd = 0;
+
 
   //method
   public static void reset(){

@@ -187,13 +187,13 @@ public class Level2 extends Level {
     switch (turn){
       case 10: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.4f;
+        Config.scaleTime[1] = 1.5f;
         System.out.println("log: " +turn);
         break;
       }
       case 20: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.5f;
+        Config.scaleTime[1] = 1.6f;
         System.out.println("log: " +turn);
         break;
       }
@@ -213,21 +213,21 @@ public class Level2 extends Level {
       }
       case 50: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.9f;
+        Config.scaleTime[1] = 2f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 60: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2.0f;
+        Config.scaleTime[1] = 2.2f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2.1f;
+        Config.scaleTime[1] = 2.2f;
         System.out.println("log: " +turn);
 
         break;
@@ -241,7 +241,7 @@ public class Level2 extends Level {
       }
       case 90: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 2.4f;
+        Config.scaleTime[1] = 2.6f;
         System.out.println("log: " +turn);
 
         break;

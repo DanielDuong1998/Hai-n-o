@@ -106,7 +106,7 @@ public class PlayScene extends GScreen {
     switch (Config.modeSelecting){
       case 0: {
         Config.scaleTimeCtn[0] = 1000;
-        Config.scaleTimeCtn[1] = 1.6f;
+        Config.scaleTimeCtn[1] = 1.8f;
         break;
       }
       case 1: {
@@ -116,12 +116,12 @@ public class PlayScene extends GScreen {
       }
       case 2: {
         Config.scaleTimeCtn[0] = 1000;
-        Config.scaleTimeCtn[1] = 1.3f;
+        Config.scaleTimeCtn[1] = 1.4f;
         break;
       }
       case 3: {
         Config.scaleTimeCtn[0] = 1000;
-        Config.scaleTimeCtn[1] = 1.5f;
+        Config.scaleTimeCtn[1] = 1.6f;
         break;
       }
     }

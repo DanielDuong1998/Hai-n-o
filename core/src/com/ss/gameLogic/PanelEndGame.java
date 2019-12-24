@@ -13,7 +13,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.ss.GMain;
 import com.ss.core.action.exAction.GSimpleAction;
+import com.ss.core.exSprite.GShapeSprite;
 import com.ss.core.util.GLayerGroup;
+import com.ss.core.util.GStage;
 import com.ss.core.util.GUI;
 import com.ss.effects.SoundEffect;
 import com.ss.gameLogic.StaticObjects.Config;
@@ -26,7 +28,7 @@ public class PanelEndGame {
   private PlayScene game;
   private int score, bestScore;
   private Label scoreTxt, bestScoreTxt;
-  private Image newRecord;
+  private Image newRecord, frameAds, btnYes, btnNo;
 
   public PanelEndGame(TextureAtlas atlas, GLayerGroup group, PlayScene game, int score){
     this.atlas = atlas;
@@ -95,6 +97,7 @@ public class PanelEndGame {
     banner = GUI.createImage(atlas, "bannerEndGame");
     title = GUI.createImage(atlas, "reportTxt");
     newRecord = GUI.createImage(atlas, "newRecord");
+
     group.addActor(bg);
     group.addActor(replayBtn);
     group.addActor(lobbyBtn);
@@ -115,7 +118,6 @@ public class PanelEndGame {
     float y = Config.HeightScreen/2 + replayBtn.getHeight()/2 - lobbyBtn.getHeight()/2;
     lobbyBtn.setPosition(x, y, Align.center);
     continueBtn.setPosition(Config.WidthScreen/2, lobbyBtn.getY() + lobbyBtn.getHeight()*2f, Align.center);
-
 
     title.setPosition(Config.WidthScreen/2, Config.HeightScreen*2/10, Align.center);
     banner.setPosition(Config.WidthScreen/2, Config.HeightScreen*3.5f/10, Align.center);
@@ -200,15 +202,49 @@ public class PanelEndGame {
     continueBtn.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-        setTouchBtn(Touchable.disabled);
-        SoundEffect.Play(SoundEffect.click);
-        SoundEffect.Stopmusic(2);
-        clickBtnEffect(continueBtn, ()->{
-          game.coninue();
-        });
-        return super.touchDown(event, x, y, pointer, button);
+      setTouchBtn(Touchable.disabled);
+      SoundEffect.Play(SoundEffect.click);
+      SoundEffect.Stopmusic(2);
+      clickBtnEffect(continueBtn, ()->{
+        continueBtnClicked();
+      });
+      return super.touchDown(event, x, y, pointer, button);
       }
     });
+  }
+
+  private void continueBtnClicked(){
+    Group groupDark = new Group();
+    group.addActor(groupDark);
+    GShapeSprite blackOverlay = new GShapeSprite();
+    blackOverlay.createRectangle(true, -GStage.getWorldWidth()/2,-GStage.getWorldHeight()/2, GStage.getWorldWidth()*2, GStage.getWorldHeight()*2);
+    groupDark.addActor(blackOverlay);
+    blackOverlay.setColor(0, 0, 0, 0.4f);
+    Image frm = GUI.createImage(atlas, "frmAds");
+    Image btnYes = GUI.createImage(atlas, "btnYes");
+    Image btnNo = GUI.createImage(atlas, "btnNo");
+    groupDark.addActor(frm);
+    groupDark.addActor(btnYes);
+
+    btnYes.setOrigin(Align.center);
+    btnNo.setOrigin(Align.center);
+
+    frm.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
+    btnYes.setPosition(frm.getX() + frm.getWidth()*1.5f/5, frm.getY() + frm.getHeight()*3.5f/5, Align.center);
+    btnNo.setPosition(frm.getX() + frm.getWidth()*3.5f/5, frm.getY() + frm.getHeight()*3.5f/5, Align.center);
+    eventBtnYes(btnYes, groupDark);
+    eventBtnNo(btnNo, groupDark);
+
+//    Config.countAd++;
+//    game.coninue();
+  }
+
+  private void eventBtnYes(Image img, Group group){
+
+  }
+
+  private void eventBtnNo(Image img, Group group){
+
   }
 
   private void setTouchBtn(Touchable touchable){
@@ -230,9 +266,12 @@ public class PanelEndGame {
   }
 
   public void setScore(int score){
-    if(score >= 100){
+    if(score >= 90 || Config.countAd == Config.numberAd){
+      System.out.println("countAd: " + Config.countAd);
+      Config.countAd = 0;
       continueBtn.setVisible(false);
     }
+
     String cha = Config.modeSelecting == 0 ? "m" : "%";
     this.score = score;
     scoreTxt.setText(this.score + cha);

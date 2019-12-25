@@ -12,12 +12,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Align;
 import com.ss.GMain;
+import com.ss.commons.Tweens;
 import com.ss.core.action.exAction.GSimpleAction;
 import com.ss.core.exSprite.GShapeSprite;
 import com.ss.core.util.GLayerGroup;
 import com.ss.core.util.GStage;
 import com.ss.core.util.GUI;
 import com.ss.effects.SoundEffect;
+import com.ss.effects.effectWin;
 import com.ss.gameLogic.StaticObjects.Config;
 import com.ss.scenes.PlayScene;
 
@@ -47,6 +49,7 @@ public class PanelEndGame {
           GMain.prefs.putInteger("BestScoreInf", score);
           GMain.prefs.flush();
           newRecord.setVisible(true);
+          showParticle();
         }
         break;
       }
@@ -58,7 +61,7 @@ public class PanelEndGame {
           GMain.prefs.flush();
           System.out.println("Best score lv1");
           newRecord.setVisible(true);
-
+          showParticle();
         }
         break;
       }
@@ -69,7 +72,7 @@ public class PanelEndGame {
           GMain.prefs.flush();
           System.out.println("Best score lv2");
           newRecord.setVisible(true);
-
+          showParticle();
         }
         break;
       }
@@ -80,6 +83,7 @@ public class PanelEndGame {
           GMain.prefs.flush();
           System.out.println("Best score lv3");
           newRecord.setVisible(true);
+          showParticle();
         }
         break;
       }
@@ -202,9 +206,7 @@ public class PanelEndGame {
     continueBtn.addListener(new ClickListener(){
       @Override
       public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-      setTouchBtn(Touchable.disabled);
       SoundEffect.Play(SoundEffect.click);
-      SoundEffect.Stopmusic(2);
       clickBtnEffect(continueBtn, ()->{
         continueBtnClicked();
       });
@@ -225,6 +227,7 @@ public class PanelEndGame {
     Image btnNo = GUI.createImage(atlas, "btnNo");
     groupDark.addActor(frm);
     groupDark.addActor(btnYes);
+    groupDark.addActor(btnNo);
 
     btnYes.setOrigin(Align.center);
     btnNo.setOrigin(Align.center);
@@ -239,12 +242,48 @@ public class PanelEndGame {
 //    game.coninue();
   }
 
-  private void eventBtnYes(Image img, Group group){
+  private void eventBtnYes(Image img, Group groupD){
+    img.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        SoundEffect.Play(SoundEffect.click);
+        img.setTouchable(Touchable.disabled);
+        SoundEffect.Stopmusic(2);
+        clickBtnEffect(img, ()->{
+          groupD.remove();
+          groupD.clear();
+          setTouchBtn(Touchable.disabled);
+          GMain.platform.ShowVideoReward((boolean success) -> {
+            if (success) {
+              Tweens.setTimeout(group, 1, ()->{
+                Config.countAd++;
+                game.coninue();
+              });
 
+            }else {
+              setTouchBtn(Touchable.enabled);
+              continueBtn.setVisible(false);
+            }
+          });
+        });
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
   }
 
-  private void eventBtnNo(Image img, Group group){
-
+  private void eventBtnNo(Image img, Group groupD){
+    img.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        SoundEffect.Play(SoundEffect.click);
+        img.setTouchable(Touchable.disabled);
+        clickBtnEffect(img, ()->{
+          groupD.remove();
+          groupD.clear();
+        });
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
   }
 
   private void setTouchBtn(Touchable touchable){
@@ -266,18 +305,45 @@ public class PanelEndGame {
   }
 
   public void setScore(int score){
-    if(score >= 90 || Config.countAd == Config.numberAd){
+    Config.countAdF++;
+    if(Config.countAdF == Config.numberAdF){
+      Config.countAdF = 0;
+      GMain.platform.ShowFullscreen();
+    }
+
+    if(score >= 90 || Config.countAd == Config.numberAd || !GMain.platform.isVideoRewardReady()){
       System.out.println("countAd: " + Config.countAd);
       Config.countAd = 0;
       continueBtn.setVisible(false);
     }
-
     String cha = Config.modeSelecting == 0 ? "m" : "%";
     this.score = score;
     scoreTxt.setText(this.score + cha);
     updateBestScore();
     chooseBestScore();
     this.bestScoreTxt.setText(this.bestScore+cha);
+  }
+
+  private void showParticle(){
+    Group groupDark = new Group();
+    group.addActor(groupDark);
+    GShapeSprite blackOverlay = new GShapeSprite();
+    blackOverlay.createRectangle(true, -GStage.getWorldWidth()/2,-GStage.getWorldHeight()/2, GStage.getWorldWidth()*2, GStage.getWorldHeight()*2);
+    groupDark.addActor(blackOverlay);
+    blackOverlay.setColor(0, 0, 0, 0.6f);
+
+    effectWin fw1 = new effectWin(1, Config.WidthScreen/2, Config.HeightScreen/2, false);
+    effectWin fw2 = new effectWin(2, Config.WidthScreen/2, Config.HeightScreen/2, false);
+    groupDark.addActor(fw1);
+    groupDark.addActor(fw2);
+
+    fw1.start();
+    fw2.start();
+
+    Tweens.setTimeout(group, 1.7f, ()->{
+      groupDark.remove();
+      groupDark.clear();
+    });
   }
 
   void showAds(Image btn, Group group, int index){

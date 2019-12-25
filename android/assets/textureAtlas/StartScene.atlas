@@ -1,40 +1,54 @@
 
 StartScene.png
-size: 1024,2048
+size: 2048,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 bg
   rotate: false
-  xy: 2, 305
+  xy: 2, 239
   size: 720, 1280
   orig: 720, 1280
   offset: 0, 0
   index: -1
+helpBtn
+  rotate: false
+  xy: 2, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+helpStart
+  rotate: false
+  xy: 724, 741
+  size: 554, 778
+  orig: 554, 778
+  offset: 0, 0
+  index: -1
 speaker
   rotate: false
-  xy: 569, 214
+  xy: 569, 148
   size: 103, 89
   orig: 103, 89
   offset: 0, 0
   index: -1
 speakerOff
   rotate: false
-  xy: 724, 1481
+  xy: 1280, 1415
   size: 104, 104
   orig: 104, 104
   offset: 0, 0
   index: -1
 startBtn
   rotate: false
-  xy: 2, 2
+  xy: 724, 573
   size: 500, 166
   orig: 500, 166
   offset: 0, 0
   index: -1
 titleGame
   rotate: false
-  xy: 2, 170
+  xy: 2, 104
   size: 565, 133
   orig: 565, 133
   offset: 0, 0

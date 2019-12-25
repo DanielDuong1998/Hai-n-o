@@ -30,6 +30,8 @@ public class Config {
 
   public static int numberAd = 1;
   public static int countAd = 0;
+  public static int numberAdF = 4;
+  public static int countAdF = 0;
 
 
   //method

@@ -19,12 +19,13 @@ import com.ss.core.util.GScreen;
 import com.ss.core.util.GStage;
 import com.ss.core.util.GUI;
 import com.ss.effects.SoundEffect;
+import com.ss.effects.effectWin;
 import com.ss.gameLogic.StaticObjects.Config;
 
 public class StartScene extends GScreen {
   private TextureAtlas atlas;
   private Group group;
-  private Image bg, startBtn, title, speaker, speakerOff;
+  private Image bg, startBtn, title, speaker, speakerOff, helpBtn;
 
   @Override
   public void dispose() {
@@ -38,6 +39,12 @@ public class StartScene extends GScreen {
     initAtlas();
     initGroup();
     initUI();
+  }
+
+  private void testPtc(){
+    effectWin ef = new effectWin(1, 200, 500, false);
+    group.addActor(ef);
+    ef.start();
   }
 
   private void getPrefs(){
@@ -62,6 +69,7 @@ public class StartScene extends GScreen {
     title = GUI.createImage(atlas, "titleGame");
     speaker = GUI.createImage(atlas, "speaker");
     speakerOff = GUI.createImage(atlas, "speakerOff");
+    helpBtn = GUI.createImage(atlas, "helpBtn");
 
     bg.setHeight(bg.getHeight()*Config.ratioY);
     group.addActor(bg);
@@ -69,17 +77,67 @@ public class StartScene extends GScreen {
     group.addActor(title);
     group.addActor(speaker);
     group.addActor(speakerOff);
+    group.addActor(helpBtn);
 
     title.setPosition(Config.WidthScreen/2, Config.HeightScreen/3, Align.center);
     title.setOrigin(Align.center);
     speaker.setPosition(Config.WidthScreen/10, Config.HeightScreen/10, Align.center);
     speakerOff.setPosition(Config.WidthScreen/10, Config.HeightScreen/10, Align.center);
+    helpBtn.setPosition(Config.WidthScreen*3/10, Config.HeightScreen/10, Align.center);
     speakerOff.setVisible(false);
     startBtn.setPosition(Config.WidthScreen/2, 2*Config.HeightScreen/3, Align.center);
     startBtn.setOrigin(Align.center);
     addEventStartBtn();
     effectTitle();
+    eventHelpBtn();
+
+    if(SoundEffect.music){
+      speaker.setVisible(true);
+      speakerOff.setVisible(false);
+    }
+    else {
+      speaker.setVisible(false);
+      speakerOff.setVisible(true);
+    }
     eventSpeaker();
+  }
+
+  private void eventHelpBtn(){
+    helpBtn.setOrigin(Align.center);
+    helpBtn.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        helpBtn.setTouchable(Touchable.disabled);
+        SoundEffect.Play(SoundEffect.click);
+        showHelp();
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
+  }
+
+  private void showHelp(){
+    Group groupDark = new Group();
+    group.addActor(groupDark);
+    GShapeSprite blackOverlay = new GShapeSprite();
+    blackOverlay.createRectangle(true, -GStage.getWorldWidth()/2,-GStage.getWorldHeight()/2, GStage.getWorldWidth()*2, GStage.getWorldHeight()*2);
+    groupDark.addActor(blackOverlay);
+    blackOverlay.setColor(0, 0, 0, 0.6f);
+    Image help = GUI.createImage(atlas, "helpStart");
+    groupDark.addActor(help);
+    help.setPosition(Config.WidthScreen/2, Config.HeightScreen/2, Align.center);
+    eventGroupDark(groupDark);
+  }
+
+  private void eventGroupDark(Group group){
+    group.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        helpBtn.setTouchable(Touchable.enabled);
+        group.remove();
+        group.clear();
+        return super.touchDown(event, x, y, pointer, button);
+      }
+    });
   }
 
   private void effectTitle(){

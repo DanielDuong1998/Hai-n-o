@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "707532446921",
-    "firebase_url": "https://color-match-db982.firebaseio.com",
-    "project_id": "color-match-db982",
-    "storage_bucket": "color-match-db982.appspot.com"
+    "project_number": "374687218432",
+    "firebase_url": "https://jkstone-30cd2.firebaseio.com",
+    "project_id": "jkstone-30cd2",
+    "storage_bucket": "jkstone-30cd2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:707532446921:android:d31348002d773f15584118",
+        "mobilesdk_app_id": "1:374687218432:android:1eb518af294c0a7ac991e5",
         "android_client_info": {
-          "package_name": "jk.colormatch"
+          "package_name": "jk.stone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "707532446921-ej9nfrhuasd4tqjdtvrvjf8fmnr02r08.apps.googleusercontent.com",
+          "client_id": "374687218432-4q2137rcu2h77qpj6dr4r8t7ageeenf7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDj4_sCTGLaY3wkQ_xMtBNlttwGsGQFKq8"
+          "current_key": "AIzaSyCekxCXXBDvK1rqVPH8ENAvgmMIYam_IKc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "707532446921-ej9nfrhuasd4tqjdtvrvjf8fmnr02r08.apps.googleusercontent.com",
+              "client_id": "374687218432-4q2137rcu2h77qpj6dr4r8t7ageeenf7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -79,7 +79,6 @@ public class SoundEffect {
   }
 
   public static void Stopmusic(int mode) {
-    music = true;
     switch (mode){
       case 1: {
         bgSound.stop();

@@ -73,6 +73,7 @@ public class PlayScene extends GScreen {
 
   @Override
   public void init() {
+    System.out.println("music: " + SoundEffect.music);
     SoundEffect.Playmusic(1);
     initAtlas();
     initGroup();
@@ -88,10 +89,12 @@ public class PlayScene extends GScreen {
     else{
       background.activeScroll();
       balll = new Ball(groupF);
+      //System.out.println("hehehehehehehehehehehe.................");
       ballr = new Ball(groupF);
 
       thumbl = new LeftThumb(atlas, groupF, balll);
       thumbr = new RightThumb(atlas, groupF, ballr);
+
       if(Config.isContinue){
         setUpContinue();
       }
@@ -101,6 +104,8 @@ public class PlayScene extends GScreen {
       startGame();
     }
   }
+
+
 
   private void setUpTimeScale(){
     switch (Config.modeSelecting){
@@ -457,6 +462,7 @@ public class PlayScene extends GScreen {
   }
 
   public void setUpContinue(){
+    System.out.println("Complete setUp");
     Config.isContinue = false;
     turnGame = Config.scoreCtn;
     if(Config.modeSelecting != 0){

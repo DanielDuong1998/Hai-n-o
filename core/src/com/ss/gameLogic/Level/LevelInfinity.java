@@ -181,90 +181,128 @@ public class LevelInfinity extends Level {
 
         break;
       }
+//      case 10: {
+//        Rock rock1 = manageRocks.getRock();
+//        Rock rock2 = manageRocks.getRock();
+//        Rock rock3 = manageRocks.getRock();
+//        Rock rock4 = manageRocks.getRock();
+//        int id = getId();
+//
+//        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
+//        rock2.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+//        rock3.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+//        rock4.setPosition1(Config.POSSITION_ROCK_X[2], rock3.getY() - rock3.getHeightS()/2 - rock4.getHeightS()/2);
+//
+//        rock1.moveRock(manageRocks.balll);
+//        rock2.moveRock(manageRocks.balll);
+//        rock3.moveRock(manageRocks.ballr);
+//        rock4.moveRock(manageRocks.ballr);
+//        rock4.activeNext();
+//
+//        break;
+//      }
+//      case 11: {
+//        Rock rock1 = manageRocks.getRock();
+//        Rock rock2 = manageRocks.getRock();
+//        Rock rock3 = manageRocks.getRock();
+//        Rock rock4 = manageRocks.getRock();
+//        int id = getId();
+//
+//        rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
+//        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+//        rock3.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+//        rock4.setPosition1(Config.POSSITION_ROCK_X[1], rock3.getY() - rock3.getHeightS()/2 - rock4.getHeightS()/2);
+//
+//        rock1.moveRock(manageRocks.ballr);
+//        rock2.moveRock(manageRocks.ballr);
+//        rock3.moveRock(manageRocks.balll);
+//        rock4.moveRock(manageRocks.balll);
+//        rock4.activeNext();
+//
+//        break;
+//      }
+//      case 12: {
+//        Rock rock1 = manageRocks.getRock();
+//        Rock rock2 = manageRocks.getRock();
+//        Rock rock3 = manageRocks.getRock();
+//        Rock rock4 = manageRocks.getRock();
+//        Rock rock5 = manageRocks.getRock();
+//        int id = getId();
+//
+//        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
+//        rock2.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+//        rock3.setPosition1(Config.POSSITION_ROCK_X[0], rock2.getY() - rock3.getHeightS()/2 - rock2.getHeightS()/2 - padding);
+//        rock4.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
+//        rock5.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock5.getHeightS()/2 - rock4.getHeightS()/2 - padding);
+//
+//        rock1.moveRock(manageRocks.balll);
+//        rock2.moveRock(manageRocks.balll);
+//        rock3.moveRock(manageRocks.balll);
+//        rock4.moveRock(manageRocks.ballr);
+//        rock5.moveRock(manageRocks.ballr);
+//        rock3.activeNext();
+//
+//        break;
+//      }
+//      case 13: {
+//        Rock rock1 = manageRocks.getRock();
+//        Rock rock2 = manageRocks.getRock();
+//        Rock rock3 = manageRocks.getRock();
+//        Rock rock4 = manageRocks.getRock();
+//        Rock rock5 = manageRocks.getRock();
+//        int id = getId();
+//
+//        rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
+//        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
+//        rock3.setPosition1(Config.POSSITION_ROCK_X[3], rock2.getY() - rock3.getHeightS()/2 - rock2.getHeightS()/2 - padding);
+//        rock4.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
+//        rock5.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock5.getHeightS()/2 - rock4.getHeightS()/2 - padding);
+//
+//        rock1.moveRock(manageRocks.ballr);
+//        rock2.moveRock(manageRocks.ballr);
+//        rock3.moveRock(manageRocks.ballr);
+//        rock4.moveRock(manageRocks.balll);
+//        rock5.moveRock(manageRocks.balll);
+//        rock3.activeNext();
+//
+//        break;
+//      }
       case 10: {
         Rock rock1 = manageRocks.getRock();
-        Rock rock2 = manageRocks.getRock();
-        Rock rock3 = manageRocks.getRock();
-        Rock rock4 = manageRocks.getRock();
         int id = getId();
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
-        rock3.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
-        rock4.setPosition1(Config.POSSITION_ROCK_X[2], rock3.getY() - rock3.getHeightS()/2 - rock4.getHeightS()/2);
-
+        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
         rock1.moveRock(manageRocks.balll);
-        rock2.moveRock(manageRocks.balll);
-        rock3.moveRock(manageRocks.ballr);
-        rock4.moveRock(manageRocks.ballr);
-        rock4.activeNext();
-
+        rock1.activeNext();
         break;
       }
       case 11: {
         Rock rock1 = manageRocks.getRock();
-        Rock rock2 = manageRocks.getRock();
-        Rock rock3 = manageRocks.getRock();
-        Rock rock4 = manageRocks.getRock();
         int id = getId();
+        rock1.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]);
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
-        rock3.setPosition1(Config.POSSITION_ROCK_X[1], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
-        rock4.setPosition1(Config.POSSITION_ROCK_X[1], rock3.getY() - rock3.getHeightS()/2 - rock4.getHeightS()/2);
-
-        rock1.moveRock(manageRocks.ballr);
-        rock2.moveRock(manageRocks.ballr);
-        rock3.moveRock(manageRocks.balll);
-        rock4.moveRock(manageRocks.balll);
-        rock4.activeNext();
-
+        rock1.moveRock(manageRocks.balll);
+        rock1.activeNext();
         break;
       }
       case 12: {
         Rock rock1 = manageRocks.getRock();
-        Rock rock2 = manageRocks.getRock();
-        Rock rock3 = manageRocks.getRock();
-        Rock rock4 = manageRocks.getRock();
-        Rock rock5 = manageRocks.getRock();
         int id = getId();
 
-        rock1.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
-        rock3.setPosition1(Config.POSSITION_ROCK_X[0], rock2.getY() - rock3.getHeightS()/2 - rock2.getHeightS()/2 - padding);
-        rock4.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
-        rock5.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock5.getHeightS()/2 - rock4.getHeightS()/2 - padding);
+        rock1.setPosition1(Config.POSSITION_ROCK_X[2], Config.POSSITION_ROCK_Y[id]);
 
-        rock1.moveRock(manageRocks.balll);
-        rock2.moveRock(manageRocks.balll);
-        rock3.moveRock(manageRocks.balll);
-        rock4.moveRock(manageRocks.ballr);
-        rock5.moveRock(manageRocks.ballr);
-        rock3.activeNext();
-
+        rock1.moveRock(manageRocks.ballr);
+        rock1.activeNext();
         break;
       }
       case 13: {
         Rock rock1 = manageRocks.getRock();
-        Rock rock2 = manageRocks.getRock();
-        Rock rock3 = manageRocks.getRock();
-        Rock rock4 = manageRocks.getRock();
-        Rock rock5 = manageRocks.getRock();
         int id = getId();
 
         rock1.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]);
-        rock2.setPosition1(Config.POSSITION_ROCK_X[3], Config.POSSITION_ROCK_Y[id]-rock2.getHeightS()/2 - rock1.getHeightS()/2 - padding);
-        rock3.setPosition1(Config.POSSITION_ROCK_X[3], rock2.getY() - rock3.getHeightS()/2 - rock2.getHeightS()/2 - padding);
-        rock4.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]);
-        rock5.setPosition1(Config.POSSITION_ROCK_X[0], Config.POSSITION_ROCK_Y[id]-rock5.getHeightS()/2 - rock4.getHeightS()/2 - padding);
 
         rock1.moveRock(manageRocks.ballr);
-        rock2.moveRock(manageRocks.ballr);
-        rock3.moveRock(manageRocks.ballr);
-        rock4.moveRock(manageRocks.balll);
-        rock5.moveRock(manageRocks.balll);
-        rock3.activeNext();
-
+        rock1.activeNext();
         break;
       }
       default: break;
@@ -283,7 +321,7 @@ public class LevelInfinity extends Level {
   private int checkMode(Array<Integer> tempArr){
     Array<Integer> nums = new Array<>();
     nums.add(0, 4, 5, 6);
-    nums.add(7);
+    nums.add(7, 12, 13);
     if(check(tempArr.get(0), nums) && check(tempArr.get(1), nums)){
       int temp = tempArr.get(1);
       while (check(temp, nums)){
@@ -294,9 +332,9 @@ public class LevelInfinity extends Level {
       return temp;
     }
     else {
-      nums.removeRange(0, 4);
+      nums.removeRange(0, 6);
       nums.add(1, 2, 3, 8);
-      nums.add(9);
+      nums.add(9, 10, 11);
       if(check(tempArr.get(0), nums) && check(tempArr.get(1), nums)){
         int temp = tempArr.get(1);
         while (check(temp, nums)){
@@ -329,7 +367,7 @@ public class LevelInfinity extends Level {
   public void startLv() {
     super.startLv();
     updateTimeScroll();
-    int mode = getMode(0, 9);
+    int mode = getMode(0, 13);
     start(mode);
   }
 

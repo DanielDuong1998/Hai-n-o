@@ -89,7 +89,6 @@ public class PlayScene extends GScreen {
     else{
       background.activeScroll();
       balll = new Ball(groupF);
-      //System.out.println("hehehehehehehehehehehe.................");
       ballr = new Ball(groupF);
 
       thumbl = new LeftThumb(atlas, groupF, balll);

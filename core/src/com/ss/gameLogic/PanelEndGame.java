@@ -50,6 +50,7 @@ public class PanelEndGame {
           GMain.prefs.flush();
           newRecord.setVisible(true);
           showParticle();
+          GMain.platform.ReportScore(score);
         }
         break;
       }
@@ -84,6 +85,7 @@ public class PanelEndGame {
           System.out.println("Best score lv3");
           newRecord.setVisible(true);
           showParticle();
+
         }
         break;
       }

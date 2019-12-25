@@ -25,7 +25,7 @@ import com.ss.gameLogic.StaticObjects.Config;
 public class StartScene extends GScreen {
   private TextureAtlas atlas;
   private Group group;
-  private Image bg, startBtn, title, speaker, speakerOff, helpBtn;
+  private Image bg, startBtn, ldbBtn, title, speaker, speakerOff, helpBtn;
 
   @Override
   public void dispose() {
@@ -66,6 +66,7 @@ public class StartScene extends GScreen {
   private void initUI(){
     bg = GUI.createImage(atlas, "bg");
     startBtn = GUI.createImage(atlas, "startBtn");
+    ldbBtn = GUI.createImage(atlas, "ldbBtn");
     title = GUI.createImage(atlas, "titleGame");
     speaker = GUI.createImage(atlas, "speaker");
     speakerOff = GUI.createImage(atlas, "speakerOff");
@@ -74,6 +75,7 @@ public class StartScene extends GScreen {
     bg.setHeight(bg.getHeight()*Config.ratioY);
     group.addActor(bg);
     group.addActor(startBtn);
+    group.addActor(ldbBtn);
     group.addActor(title);
     group.addActor(speaker);
     group.addActor(speakerOff);
@@ -85,9 +87,12 @@ public class StartScene extends GScreen {
     speakerOff.setPosition(Config.WidthScreen/10, Config.HeightScreen/10, Align.center);
     helpBtn.setPosition(Config.WidthScreen*3/10, Config.HeightScreen/10, Align.center);
     speakerOff.setVisible(false);
-    startBtn.setPosition(Config.WidthScreen/2, 2*Config.HeightScreen/3, Align.center);
+    startBtn.setPosition(Config.WidthScreen/2, Config.HeightScreen*2.8f/5, Align.center);
     startBtn.setOrigin(Align.center);
+    ldbBtn.setOrigin(Align.center);
+    ldbBtn.setPosition(Config.WidthScreen/2, Config.HeightScreen*3.8f/5, Align.center);
     addEventStartBtn();
+    addEventLdbBtn();
     effectTitle();
     eventHelpBtn();
 
@@ -192,6 +197,25 @@ public class StartScene extends GScreen {
         nextScene();
       });
       return super.touchDown(event, x, y, pointer, button);
+      }
+    });
+  }
+
+  private void addEventLdbBtn(){
+    ldbBtn.addListener(new ClickListener(){
+      @Override
+      public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+        SoundEffect.Play(SoundEffect.click);
+        //ldbBtn.setTouchable(Touchable.disabled);
+        ldbBtn.addAction(Actions.sequence(
+          Actions.scaleBy(-0.3f, -0.3f, 0.05f, Interpolation.swingIn),
+          Actions.scaleBy(0.3f, 0.3f, 0.05f, Interpolation.sineOut)
+        ));
+        Tweens.setTimeout(group, 0.1f, ()->{
+          GMain.platform.ShowLeaderboard();
+          //nextScene();
+        });
+        return super.touchDown(event, x, y, pointer, button);
       }
     });
   }

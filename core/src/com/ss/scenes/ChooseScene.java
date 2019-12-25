@@ -69,13 +69,16 @@ public class ChooseScene extends GScreen {
     group.addActor(haBtn);
     group.addActor(backBtn);
 
-    for(int i = 0; i < 3; i++) {
-      Image md = GUI.createImage(atlas, "master");
-      group.addActor(md);
-      md.setVisible(false);
-      medal.add(md);
-    }
-
+    Image md1 = GUI.createImage(atlas, "newbie");
+    Image md2 = GUI.createImage(atlas, "pro");
+    Image md3 = GUI.createImage(atlas, "master");
+    group.addActor(md1);
+    group.addActor(md2);
+    group.addActor(md3);
+    md1.setVisible(false);
+    md2.setVisible(false);
+    md3.setVisible(false);
+    medal.add(md1, md2, md3);
 
 
     easyBtn.setPosition(Config.WidthScreen/2, Config.HeightScreen/3, Align.center);

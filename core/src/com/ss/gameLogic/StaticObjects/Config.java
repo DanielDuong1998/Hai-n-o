@@ -1,6 +1,7 @@
 package com.ss.gameLogic.StaticObjects;
 
 import com.badlogic.gdx.math.Vector2;
+import com.ss.GMain;
 import com.ss.core.util.GStage;
 
 public class Config {
@@ -15,7 +16,7 @@ public class Config {
 
   //can change
   public static float duaration = 5;
-  public static float velocity = 500;
+  public static float velocity = GMain.platform.GetConfigIntValue("velocity", 500);
   public static float[] scaleTime = new float[]{1000, 1};
   public static int modeSelecting = 1; //1 -> easy, 2 -> medium, 3 -> hard, 0 -> infinity
   public static int bestScoreInf = 0;
@@ -28,9 +29,9 @@ public class Config {
   public static int scoreCtn = 0;
   public static float[] scaleTimeCtn = new float[]{0, 0};
 
-  public static int numberAd = 1;
+  public static int numberAd = GMain.platform.GetConfigIntValue("numberAd", 1);
   public static int countAd = 0;
-  public static int numberAdF = 4;
+  public static int numberAdF = GMain.platform.GetConfigIntValue("numberAdF", 4);
   public static int countAdF = 0;
 
 

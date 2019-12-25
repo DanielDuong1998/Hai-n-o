@@ -6,36 +6,36 @@ filter: Nearest,Nearest
 repeat: none
 backBtn
   rotate: false
-  xy: 724, 1670
+  xy: 724, 1788
   size: 250, 83
   orig: 250, 83
   offset: 0, 0
   index: -1
 bg
   rotate: false
-  xy: 2, 473
+  xy: 2, 591
   size: 720, 1280
   orig: 720, 1280
   offset: 0, 0
   index: -1
 challengeBtn
   rotate: false
-  xy: 2, 137
+  xy: 2, 2
   size: 500, 166
   orig: 500, 166
   offset: 0, 0
   index: -1
 infinityBtn
   rotate: false
-  xy: 2, 305
+  xy: 2, 170
   size: 500, 166
   orig: 500, 166
   offset: 0, 0
   index: -1
 modeTitle
   rotate: false
-  xy: 2, 2
-  size: 400, 133
-  orig: 400, 133
+  xy: 2, 338
+  size: 430, 251
+  orig: 430, 251
   offset: 0, 0
   index: -1

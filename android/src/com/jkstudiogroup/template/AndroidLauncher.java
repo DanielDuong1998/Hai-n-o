@@ -51,16 +51,16 @@ public class AndroidLauncher extends AndroidApplication {
 
 	private FirebaseAnalytics mFirebaseAnalytics;
 	private FirebaseRemoteConfig mFirebaseRemoteConfig;
-	private static final String ADMOB_APP_ID = "ca-app-pub-9108876944724815~8160462448";
+	private static final String ADMOB_APP_ID = "ca-app-pub-9108876944724815~7054877609";
 	private static final String ADMOB_BANNER_ID = "ca-app-pub-3940256099942544/6300978111";
-	private static final String ADMOB_FULLSCREEN_ID = "ca-app-pub-3940256099942544/1033173712";
-	private static final String ADMOB_VIDEO_ID = "ca-app-pub-3940256099942544/5224354917";
+	private static final String ADMOB_FULLSCREEN_ID = "ca-app-pub-9108876944724815/9297897566";
+	private static final String ADMOB_VIDEO_ID = "ca-app-pub-9108876944724815/5689825043";
 
 	private IPlatform.OnVideoRewardClosed videoRewardCallback = null;
 	boolean bannerVisible = false;
 
 	//--begin leaderboard
-	private static final String LEADERBOARD_ID = "CgkIm7CnlaEREAIQAA";
+	private static final String LEADERBOARD_ID = "CgkIh4CYxMMZEAIQAA";
 	private GoogleSignInClient mGoogleSignInClient;
 	private LeaderboardsClient mLeaderboardsClient;
 	private static final int RC_LEADERBOARD_UI = 9004;

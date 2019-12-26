@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.utils.Align;
+import com.ss.GMain;
 import com.ss.core.util.GLayerGroup;
 import com.ss.gameLogic.animation;
 
@@ -14,8 +15,8 @@ public class Ball {
 
   public Ball(GLayerGroup groupF){
     this.groupF = groupF;
-    w = 70;
-    h = 70;
+    w = GMain.platform.GetConfigIntValue("widthBall", 70);
+    h = GMain.platform.GetConfigIntValue("heightBall", 70);
     initGroup();
     initAni();
   }

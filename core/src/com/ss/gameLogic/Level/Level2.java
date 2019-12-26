@@ -26,7 +26,7 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
-        if(turn >=70){
+        if(turn >=80){
           id = 1;
         }
 
@@ -42,7 +42,7 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
-        if(turn >=70){
+        if(turn >=80){
           id = 1;
         }
 
@@ -58,7 +58,7 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
-        if(turn >=70){
+        if(turn >=80){
           id = 1;
         }
 
@@ -74,7 +74,7 @@ public class Level2 extends Level {
         Rock rock1 = manageRocks.getRock();
         Rock rock2 = manageRocks.getRock();
         int id = (int) Math.floor(Math.random()*2);
-        if(turn >=70){
+        if(turn >=80){
           id = 1;
         }
 

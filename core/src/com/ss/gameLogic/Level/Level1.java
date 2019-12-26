@@ -50,7 +50,7 @@ public class Level1 extends Level {
         int id = 1;
         if(turn >= 60){
           int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
+          if(percent >= 50) {
             id = 0;
           }
           else {
@@ -72,7 +72,7 @@ public class Level1 extends Level {
         int id = 1;
         if(turn >= 60){
           int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
+          if(percent >= 50) {
             id = 0;
           }
           else {
@@ -94,7 +94,7 @@ public class Level1 extends Level {
         int id = 1;
         if(turn >= 60){
           int percent = (int) Math.floor(Math.random()*100 + 1);
-          if(percent >= 70) {
+          if(percent >= 50) {
             id = 0;
           }
           else {
@@ -259,14 +259,14 @@ public class Level1 extends Level {
       }
       case 70: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.8f;
+        Config.scaleTime[1] = 1.9f;
         System.out.println("log: " +turn);
 
         break;
       }
       case 80: {
         Config.scaleTime[0] = 1000;
-        Config.scaleTime[1] = 1.9f;
+        Config.scaleTime[1] = 2.1f;
         System.out.println("log: " +turn);
 
         break;
